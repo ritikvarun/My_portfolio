@@ -29,7 +29,7 @@ const HeroMain = () => {
           >
             <div className=" rounded-full h-auto w-[350px] md:w-auto m-auto  lg:px-12 grayscale hover:grayscale-0 transition-all ease duration-300">
               <Image
-                src="/images/Ritik.JPG"
+                src="/images/Contact.png"
                 height={550}
                 width={400}
                 alt="Ritik"
