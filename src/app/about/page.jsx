@@ -8,6 +8,7 @@ import About from "@/app/about/components/About.jsx";
 import Skills from "@/app/about/components/Skills.jsx";
 import Education from "./components/Education";
 import Quote from "./components/quote";
+
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,17 +17,17 @@ const AboutPage = () => {
   return (
     <>
       <main className="overflow-hidden">
-        <div className="relative h-screen mt-20 gap-4 p-10 flex justify-center items-center flex-col mb-10 overflow-hidden">
+        <div className="relative h-screen mt-20 gap-4 p-10 flex justify-center items-center flex-col overflow-hidden">
           {/* Hero Start */}
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.6 }}
               transition={{ ease: "circOut", duration: 1 }}
-              className="bg-slate-300 rounded-sm h-[300px] md:h-[500px] w-[50vw] md:w-[20vw] grayscale hover:grayscale-0 "
+              className="bg-slate-300 rounded-sm h-[300px] md:h-[500px] w-[50vw] md:w-[20vw] "
             >
               <Image
-                src="/images/ritik.jpg"
+                src="/images/Me/Ritik.png"
                 alt="Ritik Varun"
                 layout="fill"
                 objectFit="cover"

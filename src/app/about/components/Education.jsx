@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Win from "@/app/about/components/Achivements";
+import Achivements from "@/app/about/components/Achivements";
 
 function Wrapper({ children }) {
   return (
@@ -114,7 +114,7 @@ export default function Education() {
                     width={400}
                     height={225}
                     alt="Education"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
@@ -123,7 +123,7 @@ export default function Education() {
                     width={400}
                     height={225}
                     alt="Education"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
@@ -132,7 +132,7 @@ export default function Education() {
                     width={400}
                     height={225}
                     alt="Education"
-                    className="rounded-lg w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                    className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function Education() {
                       visibleAchievements[index - 1]?.year !==
                         achievement.year ? (
                         <div className="flex items-center gap-3 mb-3 mt-2">
-                          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-full bg-gray-00 flex items-center justify-center">
                             <span className="text-xs font-bold text-gray-600">
                               {achievement.year}
                             </span>
@@ -217,7 +217,7 @@ export default function Education() {
                       ) : null}
 
                       {/* Glassmorphism achievement card with monochrome to color effect */}
-                      <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-4 shadow-lg hover:bg-white/30 transition-all duration-300 hover:shadow-xl grayscale hover:grayscale-0">
+                      <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-4 shadow-lg hover:bg-white/30 transition-all duration-300 hover:shadow-xl">
                         <div className="flex items-center gap-4">
                           <div
                             className={`aspect-square w-10 rounded-full bg-gradient-to-r ${achievement.color} flex items-center justify-center text-primary-foreground transition-all duration-300`}
@@ -239,7 +239,7 @@ export default function Education() {
                     </motion.div>
                   ))}
                   {/* Image Certification Section */}
-                  <Win />
+                  <Achivements />
                   {/* Image Certification Section */}
                 </AnimatePresence>
               </div>

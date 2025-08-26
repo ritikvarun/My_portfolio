@@ -27,7 +27,7 @@ const HeroMain = () => {
               type: "spring",
             }}
           >
-            <div className=" rounded-full h-auto w-[350px] md:w-auto m-auto  lg:px-12 grayscale hover:grayscale-0 transition-all ease duration-300">
+            <div className=" rounded-full h-auto w-[330px] md:w-auto m-auto  lg:px-12  hover:grayscale-0 transition-all ease duration-300">
               <Image
                 src="/images/Me/Ritik.png"
                 height={550}
@@ -111,7 +111,7 @@ const HeroMain = () => {
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             {/* About Image Section Start */}
             <motion.div
-              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0"
+              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0"
               initial={{
                 x: 300,
                 opacity: 0,
@@ -186,7 +186,7 @@ const HeroMain = () => {
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             {/* Project Image Section Start */}
             <motion.div
-              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale hover:grayscale-0 "
+              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0 "
               initial={{
                 x: 300,
                 opacity: 0,
@@ -263,7 +263,7 @@ const HeroMain = () => {
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             {/* Contact Image Section Start  */}
             <motion.div
-              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[70vw] md:w-[30vw] grayscale hover:grayscale-0"
+              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0"
               initial={{
                 x: 300,
                 opacity: 0,

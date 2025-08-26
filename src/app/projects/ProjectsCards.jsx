@@ -51,7 +51,7 @@ const DialogButton = () => {
                 />
               ))}
             </div>
-            <div className="break-words w-full">{project.D}</div>
+            <div className="break-words w-full">{project.Detail}</div>
             <div className="flex gap-4 mt-4">
               <a
                 href={project.demo}
