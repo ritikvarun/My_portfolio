@@ -58,13 +58,15 @@
   },
   {
     "id": 2,
-    "name": "Todo App",
-    "description": "A simple todo app with React and local storage.",
+    "name": "Cara E-commerce",
+    "description": "",
     "images": [
-      "/images/ritik.jpg",
-      "/images/ritik2.jpg"
+      "/images/projects/Cara/C1.png",
+       "/images/projects/Cara/C2.png",
+        "/images/projects/Cara/C3.png"
+       
     ],
-    "D":"Myaejfsdkfhsdjfksdjhfkjsdkfjbksbavkjsdjnacsdkcnkndacnsdkjnckjdsnfkjdsnjfknsdkajnfkdj",
+    "D":"Myaejfsdkfhsdjfk",
     "demo": "https://todo-demo.com",
     "github": "https://github.com/yourname/todo"
   },
