@@ -110,7 +110,7 @@ export default function Education() {
               <div className="gap-4 mb-4 flex items-stretch md:h-[300px] xl:h-[400px]">
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
                   <Image
-                    src="/images/Education/E1.jpeg"
+                    src="/images/Education/E1.png"
                     width={400}
                     height={225}
                     alt="Education"
@@ -119,7 +119,7 @@ export default function Education() {
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
                   <Image
-                    src="/images/Education/E4.jpeg"
+                    src="/images/Education/E4.png"
                     width={400}
                     height={225}
                     alt="Education"
@@ -128,7 +128,7 @@ export default function Education() {
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
                   <Image
-                    src="/images/Education/E2.jpeg"
+                    src="/images/Education/E2.png"
                     width={400}
                     height={225}
                     alt="Education"
