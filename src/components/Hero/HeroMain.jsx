@@ -205,7 +205,7 @@ const HeroMain = () => {
               }}
             >
               <Image
-                src="/images/ritik.jpg"
+                src="/images/projects/P1.png"
                 layout="fill"
                 className="object-cover"
                 alt="Projects"
