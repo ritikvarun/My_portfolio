@@ -56,7 +56,7 @@ const DialogButton = () => {
               <a
                 href={project.demo}
                 target="_blank"
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+                className="px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800"
               >
                 Live Demo
               </a>
