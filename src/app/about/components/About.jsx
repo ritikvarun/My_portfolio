@@ -9,7 +9,7 @@ const about = () => {
       <div className="relative mx-auto container gap-4 px-10 grid grid-cols-1 md:grid-cols-2 ">
         <div className="flex justify-center items-start flex-col mb-5 ">
           <div className="images relative w-full  aspect-square">
-            <div className="absolute top-16 left-6 w-[50%]  aspect-square transition-all ease duration-300">
+            <div className="absolute top-14 left-1 w-[55%]  aspect-square transition-all ease duration-300">
               <motion.div
                 initial={{ opacity: 0, scale: 0.5, x: 100 }}
                 whileInView={{
@@ -21,13 +21,13 @@ const about = () => {
               >
                 <Image
                   src="/images/About/me3.jpeg"
-                  alt="Alvalens"
+                  alt="Ritik"
                   layout="fill"
                   objectFit="cover"
                 />
               </motion.div>
             </div>
-            <div className="absolute  right-5 w-[40%]  aspect-square transition-all ease duration-300">
+            <div className="absolute  right-1 w-[40%]  aspect-square transition-all ease duration-300">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -43,14 +43,14 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/me2.jpeg"
+                  src="/images/About/me1.jpeg"
                   alt="Alvalens"
                   layout="fill"
                   objectFit="cover"
                 />
               </motion.div>
             </div>
-            <div className="absolute bottom-16 right-5 w-[40%]  aspect-square transition-all ease duration-300">
+            <div className="absolute bottom-16 right-1 w-[40%]  aspect-square transition-all ease duration-300">
               <motion.div
                 initial={{
                   opacity: 0,
@@ -68,7 +68,7 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/me4.jpeg"
+                  src="/images/About/me5.jpeg"
                   alt="Alvalens"
                   layout="fill"
                   objectFit="cover"

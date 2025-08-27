@@ -130,7 +130,7 @@ const HeroMain = () => {
               }}
             >
               <Image
-                src="/images/ritik.jpg"
+                src="/images/Me/Me2.png"
                 layout="fill"
                 className="object-cover"
                 alt="About"

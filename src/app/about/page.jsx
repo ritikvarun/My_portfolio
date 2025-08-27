@@ -27,7 +27,7 @@ const AboutPage = () => {
               className="bg-slate-300 rounded-sm h-[300px] md:h-[500px] w-[50vw] md:w-[20vw] "
             >
               <Image
-                src="/images/Me/Ritik.png"
+                src="/images/Me/Me2.png"
                 alt="Ritik Varun"
                 layout="fill"
                 objectFit="cover"

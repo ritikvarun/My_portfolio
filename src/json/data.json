@@ -14,7 +14,11 @@
     },
     {
       "name": "React JS",
-      "image": "images/skills/react.png"
+      "image": "images/skills/reactjs.png"
+    },
+    {
+      "name": "Next JS",
+      "image": "images/skills/Next.png"
     },
     {
       "name": "Tailwind CSS",
@@ -34,7 +38,7 @@
     },
     {
       "name": "GitHub",
-      "image": "images/skills/github.png"
+      "image": "images/skills/github-mark.png"
     },
     {
       "name": "Figma",
@@ -85,15 +89,15 @@
       "link": "https://olympus.mygreatlearning.com/courses/52045/modules/items/1372543?pb_id=581"
     }
     , {
-      "title": "React JS Tutorial",
-      "issuer": "Great Learning",
-      "image": "/images/Certificates/React2.png",
-      "link": "https://olympus.mygreatlearning.com/courses/52045/modules/items/1372543?pb_id=581"
+      "title": "5 Months Intership Appreciation",
+      "issuer": "Welvic India",
+      "image": "/images/Certificates/Email1.png",
+      "link": "https://mail.google.com/mail/u/0/?q=welvic#search/welvic/FMfcgzQXKDZnZhbhQTWnfgfJJGjkVvbf"
     }
     , {
       "title": "React JS Tutorial",
       "issuer": "Great Learning",
-      "image": "/images/Certificates/React2.png",
+      "image": "/images/Certificates/Email2.png",
       "link": "https://olympus.mygreatlearning.com/courses/52045/modules/items/1372543?pb_id=581"
     }
   ]
