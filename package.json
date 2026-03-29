@@ -21,10 +21,17 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.540.0",
     "motion": "^12.23.12",
+<<<<<<< HEAD
     "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "swiper": "^11.2.10",
+=======
+    "next": "^15.5.14",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "swiper": "^12.1.2",
+>>>>>>> 151bd0f (Initial commit)
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
