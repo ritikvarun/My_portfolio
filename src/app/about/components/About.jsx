@@ -20,11 +20,7 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-<<<<<<< HEAD
                   src="/images/About/me3.jpeg"
-=======
-                  src="/images/About/me2.jpeg"
->>>>>>> 151bd0f (Initial commit)
                   alt="Ritik"
                   layout="fill"
                   objectFit="cover"
@@ -47,13 +43,8 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-<<<<<<< HEAD
                   src="/images/About/me1.jpeg"
                   alt="Alvalens"
-=======
-                  src="/images/About/me6.jpeg"
-                  alt="Ritik"
->>>>>>> 151bd0f (Initial commit)
                   layout="fill"
                   objectFit="cover"
                 />
@@ -77,13 +68,8 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-<<<<<<< HEAD
                   src="/images/About/me5.jpeg"
                   alt="Alvalens"
-=======
-                  src="/images/About/E4.PNG"
-                  alt="Ritik"
->>>>>>> 151bd0f (Initial commit)
                   layout="fill"
                   objectFit="cover"
                 />

@@ -40,18 +40,6 @@ export default function Education() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const achievementsByYear = {
-<<<<<<< HEAD
-    2024: [
-      {
-        icon: faMedal,
-        title: "1st place (Gold Medal)",
-        subtitle: "Uttam fest 2024",
-        date: "Jan 2025",
-        color: "from-yellow-400 to-orange-500",
-      },
-    ],
-    2023: [
-=======
     2026: [
       {
         icon: faMedal,
@@ -71,16 +59,11 @@ export default function Education() {
       },
     ],
     2024: [
->>>>>>> 151bd0f (Initial commit)
       {
         icon: faAward,
         title: "2nd Place (Trophy)",
         subtitle: "Uttam fest 2023",
-<<<<<<< HEAD
-        date: "Feb 2023",
-=======
         date: "Feb 2024",
->>>>>>> 151bd0f (Initial commit)
         color: "from-blue-500 to-purple-600",
       },
     ],
@@ -90,11 +73,7 @@ export default function Education() {
   const allAchievements = Object.entries(achievementsByYear)
     .sort(([a], [b]) => parseInt(b) - parseInt(a))
     .flatMap(([year, achievements]) =>
-<<<<<<< HEAD
-      achievements.map((achievement) => ({ ...achievement, year }))
-=======
       achievements.map((achievement) => ({ ...achievement, year })),
->>>>>>> 151bd0f (Initial commit)
     );
 
   const visibleAchievements = isExpanded
@@ -149,11 +128,7 @@ export default function Education() {
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
                   <Image
-<<<<<<< HEAD
                     src="/images/Education/E4.png"
-=======
-                    src="/images/Education/E5.JPEG"
->>>>>>> 151bd0f (Initial commit)
                     width={400}
                     height={225}
                     alt="Education"
