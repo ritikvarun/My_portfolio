@@ -151,7 +151,7 @@ const HeroMain = () => {
             >
               About Me
             </motion.h1>
-            <motion.p
+            <motion.div
               className="title  text-xl mt-4 tracking-wider text-gray-500 leading-[1.7rem] mb-5"
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -162,7 +162,7 @@ const HeroMain = () => {
             >
               A brief introduction about me and my interest.
               <Marquee />
-            </motion.p>
+            </motion.div>
             <motion.div
               initial={{ y: 40, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}

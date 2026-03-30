@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 const about = () => {
-
   return (
     <>
       <div className="relative mx-auto container gap-4 px-10 grid grid-cols-1 md:grid-cols-2 ">
@@ -20,7 +19,7 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/me6.jpeg"
+                  src="/images/About/me3.jpeg"
                   alt="Ritik"
                   fill
                   style={{ objectFit: "cover" }}
@@ -43,7 +42,7 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/Me.jpeg"
+                  src="/images/About/me6.jpeg"
                   alt="Alvalens"
                   fill
                   style={{ objectFit: "cover" }}
