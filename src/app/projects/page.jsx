@@ -25,8 +25,8 @@ const ProjectPage = () => {
               <Image
                 src="/images/projects/P1.png"
                 alt="Ritik Varun"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
               />
             </motion.div>
           </div>

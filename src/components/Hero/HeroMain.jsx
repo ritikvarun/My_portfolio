@@ -131,7 +131,7 @@ const HeroMain = () => {
             >
               <Image
                 src="/images/Me/Me2.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="About"
               />
@@ -206,7 +206,7 @@ const HeroMain = () => {
             >
               <Image
                 src="/images/projects/P1.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="Projects"
               />
@@ -283,7 +283,7 @@ const HeroMain = () => {
             >
               <Image
                 src="/images/Contact.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="Ritik Setup"
               />

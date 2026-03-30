@@ -22,8 +22,8 @@ const about = () => {
                 <Image
                   src="/images/About/me3.jpeg"
                   alt="Ritik"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                 />
               </motion.div>
             </div>
@@ -45,8 +45,8 @@ const about = () => {
                 <Image
                   src="/images/About/me1.jpeg"
                   alt="Alvalens"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                 />
               </motion.div>
             </div>
@@ -70,8 +70,8 @@ const about = () => {
                 <Image
                   src="/images/About/me5.jpeg"
                   alt="Alvalens"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                 />
               </motion.div>
             </div>

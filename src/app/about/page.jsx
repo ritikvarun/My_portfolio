@@ -29,8 +29,8 @@ const AboutPage = () => {
               <Image
                 src="/images/Me/Me2.png"
                 alt="Ritik Varun"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
               />
             </motion.div>
           </div>
