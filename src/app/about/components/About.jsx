@@ -19,7 +19,7 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/me3.jpeg"
+                  src="/images/About/me4.jpeg"
                   alt="Ritik"
                   fill
                   style={{ objectFit: "cover" }}
