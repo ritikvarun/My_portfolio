@@ -43,7 +43,7 @@ const about = () => {
               >
                 <Image
                   src="/images/About/me6.jpeg"
-                  alt="Alvalens"
+                  alt="Ritik"
                   fill
                   style={{ objectFit: "cover" }}
                 />
@@ -67,8 +67,8 @@ const about = () => {
                 className="w-full h-full"
               >
                 <Image
-                  src="/images/About/me5.jpeg"
-                  alt="Alvalens"
+                  src="/images/About/E4.png"
+                  alt="Ritik"
                   fill
                   style={{ objectFit: "cover" }}
                 />

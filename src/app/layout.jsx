@@ -40,7 +40,7 @@ export const metadata = {
   },
 
   icons: {
-    icon: "/images/logo.svg",     
+    icon: "/images/logo.svg",
     shortcut: "/images/logo.svg",
     apple: "/images/logo.svg",
   },

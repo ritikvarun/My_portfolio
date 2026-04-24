@@ -128,7 +128,7 @@ export default function Education() {
                 </div>
                 <div className="flex-[1] transition-all duration-300 ease-in-out hover:flex-[3] group">
                   <Image
-                    src="/images/Education/E4.png"
+                    src="/images/Education/E5.jpeg"
                     width={400}
                     height={225}
                     alt="Education"

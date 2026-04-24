@@ -49,19 +49,32 @@
   "projects": [
     {
       "id": 1,
-      "name": "IMDB Rating App",
-      "description": "IMDB Rating App React.js and TailwindCSS.",
+      "name": "ShopX E-commerce",
+      "description": "Developed a full-stack e-commerce application ",
       "images": [
-        "/images/projects/imd/M1.png",
-        "/images/projects/imd/M2.png",
-        "/images/projects/imd/M3.png"
+        "/images/projects/ShopX/S1.png",
+        "/images/projects/ShopX/S2.png",
+        "/images/projects/ShopX/S3.png"
       ],
-      "Detail": "IMDB Movie App – A responsive ReactJS application that fetches real-time data from the TMDB API. Features include trending movie swiper banner, dynamic movie listing, watchlist with local storage, search, and filter/sort by rating or popularity. Built with ReactJS, Axios, TMDB API, SwiperJS, and TailwindCSS.",
-      "demo": "https://imdb-tau-gray.vercel.app/",
-      "github": "https://github.com/ritikvarun/IMDB"
+      "Detail": "Developed a full-stack e-commerce application with features like product listing, cart functionality, and user interaction. Implemented AI-based voice navigation that allows users to move across different pages using voice commands. Worked on both frontend and backend to manage data and improve overall user experience.",
+      "demo": "https://shopx-6u3e.onrender.com/",
+      "github": "https://github.com/ritikvarun/ShopX"
     },
     {
       "id": 2,
+      "name": "Employee Management System",
+      "description": "Developed a full-stack employee management system ",
+      "images": [
+        "/images/projects/ems/1.png",
+        "/images/projects/ems/2.png",
+        "/images/projects/ems/3.png"
+      ],
+      "Detail": "Developed a full-stack Employee Management System (EMS) using React.js for the frontend and Node.js with Express for the backend. The application allows admins to efficiently manage employee data, assign tasks, and track progress.",
+      "demo": "https://ems-bay-one.vercel.app",
+      "github": "https://github.com/ritikvarun/ems"
+    },
+    {
+      "id": 3,
       "name": "Cara E-commerce",
       "description": "Cara E-commerce website built using HTML, CSS, JavaScript ",
       "images": [
@@ -72,7 +85,22 @@
       "Detail": "A responsive e-commerce website built using HTML, CSS, JavaScript, and Swiper.js. Features include modern UI, product sliders, smooth animations, and mobile-first design.",
       "demo": "https://cara-e-commerce12.netlify.app/",
       "github": "https://github.com/ritikvarun/Cara_E-commerce"
+    },
+    {
+      "id": 4,
+      "name": "Linkedin clone",
+      "description": "A professional networking platform featuring a modern UI, complete with messaging, feed, profile.",
+      "images": [
+        "/images/projects/link/1.png",
+        "/images/projects/link/2.png",
+        "/images/projects/link/3.png"
+      ],
+      "Detail": "A professional networking platform featuring a modern UI, complete with messaging, feed, profile.",
+      "demo": "https://linkend-in-clone.vercel.app/",
+      "github": "https://github.com/ritikvarun/linkendIn-clone"
     }
+    
+    
   ],
 
   "certificates": [

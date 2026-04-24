@@ -124,10 +124,10 @@ function Row({ reverse = false }) {
     <div
       className={[
         "group flex gap-3 py-2",
-        
+
         "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
         "overflow-hidden",
-        "h-5"
+        "h-5",
       ].join(" ")}
     >
       <div

@@ -73,12 +73,12 @@ const HeroMain = () => {
               type: "spring",
             }}
           >
-            Hi, I’m Ritik Varun 👋<br />
-            I am a dedicated Web Developer with
-            experience in building modern, responsive, and scalable websites. I
-            specialize in JavaScript, React, Node.js, and Express, and I am also
-            familiar with Next.js and MongoDB. I enjoy solving problems, writing
-            clean code, and creating impactful digital solutions.
+            Hi, I’m Ritik Varun 👋
+            <br />I am a dedicated Web Developer with experience in building
+            modern, responsive, and scalable websites. I specialize in
+            JavaScript, React, Node.js, and Express, and I am also familiar with
+            Next.js and MongoDB. I enjoy solving problems, writing clean code,
+            and creating impactful digital solutions.
           </motion.p>
 
           <motion.div
@@ -92,7 +92,7 @@ const HeroMain = () => {
           >
             <Button variation="primary">
               <Link
-                href={"/docs/cv.pdf"}
+                href={"/RItik.pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
                 download

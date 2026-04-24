@@ -2,29 +2,34 @@
 @import "tw-animate-css";
 
 html {
-	font-size: 17px !important;
+  font-size: 17px !important;
 }
 
 @media (max-width: 1268px) {
-	html {
-		font-size: 14px !important;
-	}
+  html {
+    font-size: 14px !important;
+  }
 }
 
 @media (max-width: 768px) {
-	html {
-		font-size: 13px !important;
-	}
+  html {
+    font-size: 13px !important;
+  }
 }
 
 body {
-	font-family: 'Poppins', sans-serif !important;
-	color: black;
-	background-color: rgb(230, 230, 230);
+  font-family: "Poppins", sans-serif !important;
+  color: black;
+  background-color: rgb(230, 230, 230);
 }
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Jost', sans-serif !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif !important;
 }
 .title {
-	font-family: 'Jost', sans-serif !important;
+  font-family: "Jost", sans-serif !important;
 }
