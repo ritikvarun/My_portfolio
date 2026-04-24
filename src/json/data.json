@@ -52,9 +52,9 @@
       "name": "ShopX E-commerce",
       "description": "Developed a full-stack e-commerce application ",
       "images": [
-        "/images/projects/ShopX/S1.png",
-        "/images/projects/ShopX/S2.png",
-        "/images/projects/ShopX/S3.png"
+        "/images/projects/shopx/s1.png",
+        "/images/projects/shopx/s2.png",
+        "/images/projects/shopx/s3.png"
       ],
       "Detail": "Developed a full-stack e-commerce application with features like product listing, cart functionality, and user interaction. Implemented AI-based voice navigation that allows users to move across different pages using voice commands. Worked on both frontend and backend to manage data and improve overall user experience.",
       "demo": "https://shopx-6u3e.onrender.com/",
