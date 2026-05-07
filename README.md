@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.RitikVarun.my.id" target="_blank">
+  <a href="https://my-portfolio-umber-eight-26.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/🌐 Live Demo-brightgreen?style=for-the-badge" alt="Live Demo"/>
   </a>
   <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js"/>
@@ -30,7 +30,7 @@ Personal portfolio of **Ritik Varun**, a dedicated **Frontend Developer** specia
 
 > *"I enjoy solving problems, writing clean code, and creating impactful digital solutions."*
 
-🔗 **Live Site:** [www.RitikVarun.my.id](https://www.RitikVarun.my.id)
+🔗 **Live Site:** [my-portfolio-umber-eight-26.vercel.app](https://my-portfolio-umber-eight-26.vercel.app/)
 
 ---
 
