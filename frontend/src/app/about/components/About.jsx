@@ -16,12 +16,13 @@ const about = () => {
                   scale: 1,
                   x: 0,
                 }}
-                className="w-full h-full"
+                className="w-full h-full relative"
               >
                 <Image
                   src="/images/About/me4.jpeg"
                   alt="Ritik"
                   fill
+                  sizes="(max-width: 768px) 55vw, 25vw"
                   style={{ objectFit: "cover" }}
                 />
               </motion.div>
@@ -39,12 +40,13 @@ const about = () => {
                   x: 0,
                 }}
                 transition={{ delay: 0.3 }}
-                className="w-full h-full"
+                className="w-full h-full relative"
               >
                 <Image
                   src="/images/About/me6.jpeg"
                   alt="Ritik"
                   fill
+                  sizes="(max-width: 768px) 40vw, 20vw"
                   style={{ objectFit: "cover" }}
                 />
               </motion.div>
@@ -64,12 +66,13 @@ const about = () => {
                 transition={{
                   delay: 0.5,
                 }}
-                className="w-full h-full"
+                className="w-full h-full relative"
               >
                 <Image
                   src="/images/About/E4.png"
                   alt="Ritik"
                   fill
+                  sizes="(max-width: 768px) 40vw, 20vw"
                   style={{ objectFit: "cover" }}
                 />
               </motion.div>

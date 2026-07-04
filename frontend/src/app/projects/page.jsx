@@ -20,12 +20,13 @@ const ProjectPage = () => {
               initial={{ scale: 1 }}
               animate={{ scale: 1.6 }}
               transition={{ ease: "circOut", duration: 1 }}
-              className="bg-slate-300 rounded-sm h-[300px] md:h-[500px] w-[50vw] md:w-[20vw] "
+              className="relative bg-slate-300 rounded-sm h-[300px] md:h-[500px] w-[50vw] md:w-[20vw] "
             >
               <Image
                 src="/images/projects/p1.jpg"
                 alt="Ritik Varun"
                 fill
+                sizes="(max-width: 768px) 50vw, 20vw"
                 style={{ objectFit: "cover" }}
               />
             </motion.div>

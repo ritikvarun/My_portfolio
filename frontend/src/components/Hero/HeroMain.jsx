@@ -207,7 +207,7 @@ const HeroMain = () => {
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             {/* Project Image Section Start */}
             <motion.div
-              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0 "
+              className="relative bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0 "
               initial={{
                 x: 300,
                 opacity: 0,
@@ -228,6 +228,7 @@ const HeroMain = () => {
               <Image
                 src="/images/projects/p1.jpg"
                 fill
+                sizes="(max-width: 768px) 80vw, 30vw"
                 className="object-cover"
                 alt="Projects"
               />
@@ -284,7 +285,7 @@ const HeroMain = () => {
           <div className="z-0 mb-48 md:mb-0  md:absolute top-1/4  md:right-[10%] md:-translate-y-16 ">
             {/* Contact Image Section Start  */}
             <motion.div
-              className="bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0"
+              className="relative bg-slate-300 rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] grayscale-0 hover:grayscale-0"
               initial={{
                 x: 300,
                 opacity: 0,
@@ -305,6 +306,7 @@ const HeroMain = () => {
               <Image
                 src="/images/Contact.jpg"
                 fill
+                sizes="(max-width: 768px) 80vw, 30vw"
                 className="object-cover"
                 alt="Ritik Setup"
               />
