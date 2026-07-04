@@ -1,0 +1,132 @@
+{
+  "skills": [
+    {
+      "name": "HTML 5",
+      "image": "/images/skills/html.png"
+    },
+    {
+      "name": "CSS 3",
+      "image": "/images/skills/css.png"
+    },
+    {
+      "name": "JavaScript",
+      "image": "images/skills/javascript.png"
+    },
+    {
+      "name": "React JS",
+      "image": "images/skills/reactjs.png"
+    },
+    {
+      "name": "Next JS",
+      "image": "images/skills/Next.png"
+    },
+    {
+      "name": "Tailwind CSS",
+      "image": "images/skills/tailwind.png"
+    },
+    {
+      "name": "Node JS",
+      "image": "images/skills/nodejs.png"
+    },
+    {
+      "name": "MongoDB",
+      "image": "images/skills/mongodb.png"
+    },
+    {
+      "name": "Git",
+      "image": "images/skills/git.png"
+    },
+    {
+      "name": "GitHub",
+      "image": "images/skills/github-mark.png"
+    },
+    {
+      "name": "Figma",
+      "image": "images/skills/figma.png"
+    }
+  ],
+
+  "projects": [
+    {
+      "id": 1,
+      "name": "ShopX E-commerce",
+      "description": "Developed a full-stack e-commerce application ",
+      "images": [
+        "/images/projects/shopx/s1.png",
+        "/images/projects/shopx/s2.png",
+        "/images/projects/shopx/s3.png"
+      ],
+      "Detail": "Developed a full-stack e-commerce application with features like product listing, cart functionality, and user interaction. Implemented AI-based voice navigation that allows users to move across different pages using voice commands. Worked on both frontend and backend to manage data and improve overall user experience.",
+      "demo": "https://shopx-6u3e.onrender.com/",
+      "github": "https://github.com/ritikvarun/ShopX"
+    },
+    {
+      "id": 2,
+      "name": "Employee Management System",
+      "description": "Developed a full-stack employee management system ",
+      "images": [
+        "/images/projects/ems/1.png",
+        "/images/projects/ems/2.png",
+        "/images/projects/ems/3.png"
+      ],
+      "Detail": "Developed a full-stack Employee Management System (EMS) using React.js for the frontend and Node.js with Express for the backend. The application allows admins to efficiently manage employee data, assign tasks, and track progress.",
+      "demo": "https://ems-bay-one.vercel.app",
+      "github": "https://github.com/ritikvarun/ems"
+    },
+    {
+      "id": 3,
+      "name": "Cara E-commerce",
+      "description": "Cara E-commerce website built using HTML, CSS, JavaScript ",
+      "images": [
+        "/images/projects/Cara/C1.png",
+        "/images/projects/Cara/C2.png",
+        "/images/projects/Cara/C3.png"
+      ],
+      "Detail": "A responsive e-commerce website built using HTML, CSS, JavaScript, and Swiper.js. Features include modern UI, product sliders, smooth animations, and mobile-first design.",
+      "demo": "https://cara-e-commerce12.netlify.app/",
+      "github": "https://github.com/ritikvarun/Cara_E-commerce"
+    },
+    {
+      "id": 4,
+      "name": "Linkedin clone",
+      "description": "A professional networking platform featuring a modern UI, complete with messaging, feed, profile.",
+      "images": [
+        "/images/projects/link/1.png",
+        "/images/projects/link/2.png",
+        "/images/projects/link/3.png"
+      ],
+      "Detail": "A professional networking platform featuring a modern UI, complete with messaging, feed, profile.",
+      "demo": "https://linkend-in-clone.vercel.app/",
+      "github": "https://github.com/ritikvarun/linkendIn-clone"
+    }
+    
+    
+  ],
+
+  "certificates": [
+    {
+      "title": "5 Months Intership Appreciation",
+      "issuer": "Welvic India",
+      "image": "/images/Certificates/Email1.png",
+      "link": "https://mail.google.com/mail/u/0/?q=welvic#search/welvic/FMfcgzQXKDZnZhbhQTWnfgfJJGjkVvbf"
+    },
+    {
+      "title": "Henry Corporation India",
+      "issuer": "Appreciation",
+      "image": "/images/Certificates/Email2.png",
+      "link": "https://mail.google.com/mail/u/0/?q=welvic#search/hen/FMfcgzQXKDZnZjjLKtnTzsMcxWCjDGbd"
+    },
+    {
+      "title": "React Developer Certification",
+      "issuer": "Scaler Topics",
+      "image": "/images/Certificates/React.png",
+      "link": "https://example.com/react-cert"
+    },
+    {
+      "title": "React JS Tutorial",
+      "issuer": "Great Learning",
+      "image": "/images/Certificates/React2.png",
+      "link": "https://olympus.mygreatlearning.com/courses/52045/modules/items/1372543?pb_id=581"
+    }
+  ]
+}

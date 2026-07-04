@@ -1,0 +1,21 @@
+# Dependencies
+**/node_modules/
+node_modules/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.*
+
+# Build and IDE directories
+**/dist/
+**/.next/
+**/.vscode/
+**/.idea/
+**/*.log
+build/
+dist/
+.next/
+out/
