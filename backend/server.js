@@ -14,7 +14,16 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'],
+  origin: [
+    // Local development
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5173',
+    // Production
+    'https://my-portfolio-amber-eta-87.vercel.app',
+    'https://my-portfolio-admin-gamma.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
