@@ -1,5 +1,6 @@
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
+const path = require('path');
 
 // Configure Cloudinary
 cloudinary.config({
@@ -33,10 +34,13 @@ const uploadToCloudinary = async (localFilePath, folder = 'portfolio') => {
       return `/uploads/${filename}`;
     }
 
+    const ext = path.extname(localFilePath).toLowerCase();
+    const resourceType = ext === '.pdf' ? 'raw' : 'auto';
+
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(localFilePath, {
       folder: folder,
-      resource_type: 'auto' // automatically detect if image or pdf
+      resource_type: resourceType // raw for PDFs, auto for images
     });
 
     // Delete local file after successful upload
