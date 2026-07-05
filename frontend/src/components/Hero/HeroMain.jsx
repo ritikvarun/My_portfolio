@@ -133,13 +133,11 @@ const HeroMain = () => {
               type: "spring",
             }}
           >
-            <Button variation="primary">
-              <a
-                href={resolveImage(settings.resumeUrl)}
-                onClick={(e) => handleDownload(e, resolveImage(settings.resumeUrl))}
-              >
-                Download CV
-              </a>
+            <Button 
+              variation="primary"
+              onClick={(e) => handleDownload(e, resolveImage(settings.resumeUrl))}
+            >
+              Download CV
             </Button>
           </motion.div>
         </div>
