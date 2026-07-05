@@ -34,26 +34,11 @@ const HeroMain = () => {
     getSettings().then(setSettings);
   }, []);
 
-  const handleDownload = async (e, url) => {
-    if (!url) return;
+  const handleDownload = (e, url) => {
     e.preventDefault();
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Network response was not ok");
-      const blob = await response.blob();
-      const objectUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = objectUrl;
-      const filename = url.split('/').pop() || 'resume.pdf';
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(objectUrl);
-    } catch (error) {
-      console.error("Download failed, opening in new tab:", error);
-      window.open(url, '_blank');
-    }
+    if (!url) return;
+    const downloadUrl = `/api/download?url=${encodeURIComponent(url)}`;
+    window.location.href = downloadUrl;
   };
 
   if (!settings) {
