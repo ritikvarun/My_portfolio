@@ -34,13 +34,6 @@ const HeroMain = () => {
     getSettings().then(setSettings);
   }, []);
 
-  const handleDownload = (e, url) => {
-    e.preventDefault();
-    if (!url) return;
-    const downloadUrl = `/api/download?url=${encodeURIComponent(url)}`;
-    window.location.href = downloadUrl;
-  };
-
   if (!settings) {
     return <div className="h-screen w-screen flex items-center justify-center text-gray-500">Loading profile...</div>;
   }
@@ -118,11 +111,15 @@ const HeroMain = () => {
               type: "spring",
             }}
           >
-            <Button 
-              variation="primary"
-              onClick={(e) => handleDownload(e, resolveImage(settings.resumeUrl))}
-            >
-              Download CV
+            <Button variation="primary">
+              <Link
+                href={resolveImage(settings.resumeUrl)}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                Download CV
+              </Link>
             </Button>
           </motion.div>
         </div>

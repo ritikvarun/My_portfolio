@@ -35,13 +35,21 @@ const uploadToCloudinary = async (localFilePath, folder = 'portfolio') => {
     }
 
     const ext = path.extname(localFilePath).toLowerCase();
-    const resourceType = ext === '.pdf' ? 'raw' : 'auto';
+    const isPdf = ext === '.pdf';
+    const resourceType = isPdf ? 'raw' : 'auto';
 
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(localFilePath, {
+    const uploadOptions = {
       folder: folder,
       resource_type: resourceType // raw for PDFs, auto for images
-    });
+    };
+
+    if (isPdf) {
+      const filename = localFilePath.split(/[\\/]/).pop();
+      uploadOptions.headers = `Content-Disposition: attachment; filename="${filename}"`;
+    }
+
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(localFilePath, uploadOptions);
 
     // Delete local file after successful upload
     if (fs.existsSync(localFilePath)) {
