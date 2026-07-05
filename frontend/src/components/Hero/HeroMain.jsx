@@ -34,6 +34,28 @@ const HeroMain = () => {
     getSettings().then(setSettings);
   }, []);
 
+  const handleDownload = async (e, url) => {
+    if (!url) return;
+    e.preventDefault();
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Network response was not ok");
+      const blob = await response.blob();
+      const objectUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      const filename = url.split('/').pop() || 'resume.pdf';
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(objectUrl);
+    } catch (error) {
+      console.error("Download failed, opening in new tab:", error);
+      window.open(url, '_blank');
+    }
+  };
+
   if (!settings) {
     return <div className="h-screen w-screen flex items-center justify-center text-gray-500">Loading profile...</div>;
   }
@@ -112,14 +134,12 @@ const HeroMain = () => {
             }}
           >
             <Button variation="primary">
-              <Link
+              <a
                 href={resolveImage(settings.resumeUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                download
+                onClick={(e) => handleDownload(e, resolveImage(settings.resumeUrl))}
               >
                 Download CV
-              </Link>
+              </a>
             </Button>
           </motion.div>
         </div>
