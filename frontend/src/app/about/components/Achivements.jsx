@@ -14,7 +14,7 @@ const resolveImage = (path) => {
     return path;
   }
   if (path.startsWith('/uploads') || path.startsWith('uploads')) {
-    const backendUrl = process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5000';
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'https://my-portfolio-kn46.onrender.com';
     const cleanPath = path.startsWith('/') ? path : `/${path}`;
     return `${backendUrl}${cleanPath}`;
   }

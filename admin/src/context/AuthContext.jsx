@@ -2,7 +2,7 @@ import React, { createContext } from 'react'
 
 export const authDataContext = createContext()
 function AuthContext({children}) {
-    let serverUrl = import.meta.env.VITE_API_URL || "http://localhost:5000"
+    let serverUrl = import.meta.env.VITE_API_URL || "https://my-portfolio-kn46.onrender.com"
     let frontendUrl = import.meta.env.VITE_FRONTEND_URL || "http://localhost:3000"
 
     let value = {
