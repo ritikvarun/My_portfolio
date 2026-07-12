@@ -34,13 +34,9 @@ const uploadToCloudinary = async (localFilePath, folder = 'portfolio') => {
       return `/uploads/${filename}`;
     }
 
-    const ext = path.extname(localFilePath).toLowerCase();
-    const isPdf = ext === '.pdf';
-    const resourceType = isPdf ? 'raw' : 'auto';
-
     const uploadOptions = {
       folder: folder,
-      resource_type: resourceType // raw for PDFs, auto for images
+      resource_type: 'auto' // auto-detect: images stay as image, PDFs become image type (supports fl_attachment)
     };
 
     // Upload to Cloudinary
