@@ -39,10 +39,37 @@ const resolveWhatsappUrl = (val) => {
 
 const HeroMain = () => {
   const [settings, setSettings] = useState(null);
+  const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
     getSettings().then(setSettings);
   }, []);
+
+  const handleDownloadCV = async () => {
+    if (!settings?.resumeUrl || downloading) return;
+    const cvUrl = settings.resumeUrl;
+    setDownloading(true);
+    try {
+      // Browser-side fetch — Cloudinary allows CORS from browsers
+      const res = await fetch(cvUrl);
+      if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+      const blob = await res.blob();
+      const objectUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = 'Ritik_Varun_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(objectUrl);
+    } catch (err) {
+      console.warn('Blob download failed, opening in tab:', err.message);
+      // Fallback — open PDF in new tab (user can save from there)
+      window.open(cvUrl, '_blank');
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   if (!settings) {
     return <div className={cn('h-screen', 'w-screen', 'flex', 'items-center', 'justify-center', 'text-gray-500')}>Loading profile...</div>;
@@ -121,13 +148,8 @@ const HeroMain = () => {
               type: "spring",
             }}
           >
-            <Button variation="primary">
-              <a
-                href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5000'}/api/download-cv`}
-                download="Ritik_Varun_CV.pdf"
-              >
-                Download CV
-              </a>
+            <Button variation="primary" onClick={handleDownloadCV}>
+              {downloading ? 'Downloading...' : 'Download CV'}
             </Button>
             {settings.whatsappUrl && (
               <Button variation="outline">
