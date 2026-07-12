@@ -4,43 +4,77 @@ const https = require('https');
 const http = require('http');
 const Settings = require('../models/Settings');
 
-// @desc    Proxy download the CV/Resume PDF so browser downloads instead of navigating
+// Helper that follows redirects before piping the PDF
+function fetchAndPipe(url, res, redirectCount) {
+  if (redirectCount > 10) {
+    if (!res.headersSent) res.status(500).json({ message: 'Too many redirects' });
+    return;
+  }
+
+  const protocol = url.startsWith('https') ? https : http;
+
+  protocol.get(url, (fileRes) => {
+    const { statusCode, headers } = fileRes;
+
+    // Follow 301 / 302 / 307 / 308 redirects
+    if ([301, 302, 307, 308].includes(statusCode)) {
+      const location = headers.location;
+      fileRes.resume(); // discard redirect body
+      if (!location) {
+        res.status(500).json({ message: 'Redirect with no location header' });
+        return;
+      }
+      return fetchAndPipe(location, res, redirectCount + 1);
+    }
+
+    if (statusCode !== 200) {
+      fileRes.resume();
+      if (!res.headersSent) {
+        res.status(statusCode).json({ message: `Upstream returned ${statusCode}` });
+      }
+      return;
+    }
+
+    // Success — stream the file to the browser as a download
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="Ritik_Varun_CV.pdf"');
+    if (headers['content-length']) {
+      res.setHeader('Content-Length', headers['content-length']);
+    }
+    fileRes.pipe(res);
+
+  }).on('error', (err) => {
+    console.error('Proxy fetch error:', err.message);
+    if (!res.headersSent) {
+      res.status(500).json({ message: 'Failed to fetch file: ' + err.message });
+    }
+  });
+}
+
+// @desc    Proxy download the CV/Resume PDF
 // @route   GET /api/download-cv
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    let settings = await Settings.findOne();
+    const settings = await Settings.findOne();
     if (!settings || !settings.resumeUrl) {
-      return res.status(404).json({ message: 'Resume not found' });
+      return res.status(404).json({ message: 'Resume not set. Please upload a CV from the admin panel.' });
     }
 
     const fileUrl = settings.resumeUrl;
 
-    // If it's a relative/local path, redirect directly
+    // Local/relative path — serve directly from static files
     if (!fileUrl.startsWith('http')) {
-      return res.redirect(fileUrl);
+      return res.download(fileUrl, 'Ritik_Varun_CV.pdf');
     }
 
-    // Fetch the file from Cloudinary and pipe it back with download headers
-    const protocol = fileUrl.startsWith('https') ? https : http;
-
-    protocol.get(fileUrl, (fileRes) => {
-      const contentType = fileRes.headers['content-type'] || 'application/pdf';
-      res.setHeader('Content-Type', contentType);
-      res.setHeader('Content-Disposition', 'attachment; filename="Ritik_Varun_CV.pdf"');
-      if (fileRes.headers['content-length']) {
-        res.setHeader('Content-Length', fileRes.headers['content-length']);
-      }
-      fileRes.pipe(res);
-    }).on('error', (err) => {
-      console.error('Proxy download error:', err.message);
-      res.status(500).json({ message: 'Failed to download file' });
-    });
+    fetchAndPipe(fileUrl, res, 0);
 
   } catch (error) {
     console.error('Download CV error:', error.message);
-    res.status(500).json({ message: error.message });
+    if (!res.headersSent) res.status(500).json({ message: error.message });
   }
 });
 
 module.exports = router;
+
