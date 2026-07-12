@@ -45,7 +45,7 @@ const HeroMain = () => {
   }, []);
 
   const handleDownloadCV = () => {
-    if (!settings?.resumeUrl || downloading) return;
+    if (!settings?.resumeUrl) return;
     const cvUrl = settings.resumeUrl;
 
     // For Cloudinary image/upload PDFs — inject fl_attachment to force download
