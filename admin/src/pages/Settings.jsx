@@ -123,7 +123,7 @@ function Settings() {
 
         try {
             const formData = new FormData()
-            formData.append('image', file) // Using 'image' fieldname as defined in uploadRoute
+            formData.append('image', file)
 
             const token = localStorage.getItem('adminToken')
             const headers = token ? { Authorization: `Bearer ${token}` } : {}
@@ -134,19 +134,40 @@ function Settings() {
             })
 
             if (res.data.success) {
-                if (type === 'cv') setResumeUrl(res.data.fileUrl)
-                if (type === 'profile') setProfileImage(res.data.fileUrl)
-                if (type === 'aboutImg') setAboutImage(res.data.fileUrl)
-                toast.success('File uploaded successfully!')
+                const uploadedUrl = res.data.fileUrl
+
+                // Set state
+                if (type === 'cv') setResumeUrl(uploadedUrl)
+                if (type === 'profile') setProfileImage(uploadedUrl)
+                if (type === 'aboutImg') setAboutImage(uploadedUrl)
+
+                // Auto-save the uploaded URL immediately to DB
+                const savePayload = {}
+                if (type === 'cv') savePayload.resumeUrl = uploadedUrl
+                if (type === 'profile') savePayload.profileImage = uploadedUrl
+                if (type === 'aboutImg') savePayload.aboutImage = uploadedUrl
+
+                try {
+                    await axios.post(`${serverUrl}/api/settings`, savePayload, {
+                        headers,
+                        withCredentials: true
+                    })
+                    toast.success(`${type === 'cv' ? 'CV/Resume' : 'Image'} uploaded & saved!`)
+                } catch (saveErr) {
+                    console.error('Auto-save failed:', saveErr)
+                    toast.success('File uploaded! Click "Save Settings" to save.')
+                }
+            } else {
+                toast.error('Upload failed: ' + (res.data.message || 'Unknown error'))
             }
         } catch (error) {
-            console.error(error)
-            toast.error('Failed to upload file')
+            console.error('Upload error details:', error?.response?.data || error.message)
+            toast.error('Upload failed: ' + (error?.response?.data?.message || error.message || 'Server error'))
+        } finally {
+            setUploadingCV(false)
+            setUploadingProfile(false)
+            setUploadingAboutImg(false)
         }
-
-        setUploadingCV(false)
-        setUploadingProfile(false)
-        setUploadingAboutImg(false)
     }
 
     const inputClass = 'w-full h-[44px] rounded-xl px-[14px] text-gray-800 text-[14px] placeholder-gray-300 outline-none focus:ring-2 focus:ring-gray-300 bg-gray-50 border border-gray-200'
