@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { getSettings } from "@/lib/api";
+
 const about = () => {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    getSettings().then(setSettings);
+  }, []);
   return (
     <>
       <div className="relative mx-auto container gap-4 px-10 grid grid-cols-1 md:grid-cols-2 ">
@@ -98,32 +105,38 @@ const about = () => {
           <h2 className="text-2xl font-bold tracking-wider mb-3">
             RITIK VARUN
           </h2>
-          <p className="text-gray-600 text-justify title text-lg">
-            Hey there, I'm Ritik Varun, a
-            <span className="text-black font-medium">
-              {" "}
-              BCA student and an aspiring Full Stack Developer
-            </span>{" "}
-            <span className="text-black font-medium">
-              {" "}
-              currently focused on building a strong foundation in MERN stack
-              development.
-            </span>{" "}
-            I’m currently pursuing my{" "}
-            <span className="text-black font-medium">
-              BCA degree at Uttam Institute of Technology and Management
-              (affiliated with Dr. Bhim Rao Ambedkar University, Agra).
-            </span>{" "}
-            I love working on projects that combine modern web technologies with
-            fresh ideas—whether it’s creating responsive, scalable websites or
-            exploring AI tools. I enjoy pushing my limits and learning every
-            day.
-            <span className="text-black font-medium">
-              {" "}
-              Apart from coding, I stay curious about design and emerging
-              technologies, because in today’s fast-changing digital world, I
-              believe being a lifelong learner is the real superpower.
-            </span>
+          <p className="text-gray-600 text-justify title text-lg leading-relaxed">
+            {settings?.aboutBio ? (
+              settings.aboutBio
+            ) : (
+              <>
+                Hey there, I'm Ritik Varun, a
+                <span className="text-black font-medium">
+                  {" "}
+                  BCA student and an aspiring Full Stack Developer
+                </span>{" "}
+                <span className="text-black font-medium">
+                  {" "}
+                  currently focused on building a strong foundation in MERN stack
+                  development.
+                </span>{" "}
+                I’m currently pursuing my{" "}
+                <span className="text-black font-medium">
+                  BCA degree at Uttam Institute of Technology and Management
+                  (affiliated with Dr. Bhim Rao Ambedkar University, Agra).
+                </span>{" "}
+                I love working on projects that combine modern web technologies with
+                fresh ideas—whether it’s creating responsive, scalable websites or
+                exploring AI tools. I enjoy pushing my limits and learning every
+                day.
+                <span className="text-black font-medium">
+                  {" "}
+                  Apart from coding, I stay curious about design and emerging
+                  technologies, because in today’s fast-changing digital world, I
+                  believe being a lifelong learner is the real superpower.
+                </span>
+              </>
+            )}
           </p>
         </motion.div>
       </div>

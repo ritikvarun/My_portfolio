@@ -38,7 +38,9 @@ router.post('/', protect, async (req, res) => {
     instagramUrl,
     resumeUrl,
     profileImage,
-    aboutImage
+    aboutImage,
+    whatsappUrl,
+    aboutBio
   } = req.body;
 
   try {
@@ -60,6 +62,8 @@ router.post('/', protect, async (req, res) => {
     settings.resumeUrl = resumeUrl !== undefined ? resumeUrl : settings.resumeUrl;
     settings.profileImage = profileImage !== undefined ? profileImage : settings.profileImage;
     settings.aboutImage = aboutImage !== undefined ? aboutImage : settings.aboutImage;
+    settings.whatsappUrl = whatsappUrl !== undefined ? whatsappUrl : settings.whatsappUrl;
+    settings.aboutBio = aboutBio !== undefined ? aboutBio : settings.aboutBio;
 
     const updatedSettings = await settings.save();
     res.json({ success: true, settings: updatedSettings });

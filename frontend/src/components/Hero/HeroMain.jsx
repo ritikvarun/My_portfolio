@@ -28,6 +28,15 @@ const resolveImage = (path) => {
   return cleanPath;
 };
 
+const resolveWhatsappUrl = (val) => {
+  if (!val) return "";
+  if (val.startsWith('http://') || val.startsWith('https://')) {
+    return val;
+  }
+  const cleanNumber = val.replace(/\D/g, '');
+  return `https://wa.me/${cleanNumber}`;
+};
+
 const HeroMain = () => {
   const [settings, setSettings] = useState(null);
 
@@ -44,7 +53,7 @@ const HeroMain = () => {
       {/* // MainSection Start */}
       <div className={cn('mx-auto', 'mt-10', 'grid', 'grid-cols-1', 'gap-4', 'p-10', 'md:grid-cols-2', 'md:px-20', 'overflow-hidden')}>
         {/* Image Section Start */}
-        <div>
+        <div className={cn('flex', 'flex-col', 'items-center', 'justify-center')}>
           <motion.div
             className={cn('md:flex', 'col-span-1', 'mx-auto', 'justify-center', 'items-center')}
             initial={{ x: 100, opacity: 0 }}
@@ -64,6 +73,34 @@ const HeroMain = () => {
               />
             </div>
           </motion.div>
+          {/* Social Icons under the photo */}
+          <motion.div
+            className={cn('flex', 'justify-center', 'items-center', 'space-x-6', 'mt-6', 'mb-4')}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, type: "spring" }}
+          >
+            {settings.githubUrl && (
+              <a href={settings.githubUrl} target="_blank" rel="noopener noreferrer" className={cn('text-gray-500', 'hover:text-black', 'transition-all', 'text-2xl')}>
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            )}
+            {settings.linkedinUrl && (
+              <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" className={cn('text-gray-500', 'hover:text-[#0077b5]', 'transition-all', 'text-2xl')}>
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+            )}
+            {settings.contactEmail && (
+              <a href={`mailto:${settings.contactEmail}`} className={cn('text-gray-500', 'hover:text-[#ea4335]', 'transition-all', 'text-2xl')}>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </a>
+            )}
+            {settings.instagramUrl && (
+              <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" className={cn('text-gray-500', 'hover:text-[#e1306c]', 'transition-all', 'text-2xl')}>
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+            )}
+          </motion.div>
         </div>
         {/* Image Section End  */}
 
@@ -81,7 +118,7 @@ const HeroMain = () => {
             {settings.developerName}
           </motion.h3>
           <motion.h1
-            className={cn('text-black', 'text-5xl', 'md:text-6xl', 'lg:text-7xl', '2xl:text-8xl', 'font-bold', 'my-2', 'md:my-5')}
+            className={cn('text-black', 'text-2xl', 'sm:text-3xl', 'md:text-3xl', 'lg:text-4xl', 'xl:text-5xl', '2xl:text-6xl', 'font-bold', 'my-2', 'md:my-5', 'whitespace-nowrap')}
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
@@ -104,7 +141,7 @@ const HeroMain = () => {
           </motion.p>
 
           <motion.div
-            className={cn('space-x-4', 'mt-10')}
+            className={cn('flex', 'items-center', 'gap-4', 'mt-10')}
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{
@@ -122,6 +159,17 @@ const HeroMain = () => {
                 Download CV
               </Link>
             </Button>
+            {settings.whatsappUrl && (
+              <Button variation="outline">
+                <a
+                  href={resolveWhatsappUrl(settings.whatsappUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Hire Me
+                </a>
+              </Button>
+            )}
           </motion.div>
         </div>
         {/* Text Section End */}

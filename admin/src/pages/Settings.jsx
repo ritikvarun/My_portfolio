@@ -36,6 +36,8 @@ function Settings() {
     const [linkedinUrl, setLinkedinUrl] = useState("")
     const [instagramUrl, setInstagramUrl] = useState("")
     const [resumeUrl, setResumeUrl] = useState("")
+    const [whatsappUrl, setWhatsappUrl] = useState("")
+    const [aboutBio, setAboutBio] = useState("")
     
     // Photo paths
     const [profileImage, setProfileImage] = useState("")
@@ -62,6 +64,8 @@ function Settings() {
             setLinkedinUrl(data.linkedinUrl || "")
             setInstagramUrl(data.instagramUrl || "")
             setResumeUrl(data.resumeUrl || "")
+            setWhatsappUrl(data.whatsappUrl || "")
+            setAboutBio(data.aboutBio || "")
             setProfileImage(data.profileImage || "")
             setAboutImage(data.aboutImage || "")
         } catch (error) {
@@ -90,6 +94,8 @@ function Settings() {
                 githubUrl,
                 linkedinUrl,
                 instagramUrl,
+                whatsappUrl,
+                aboutBio,
                 resumeUrl,
                 profileImage,
                 aboutImage
@@ -209,13 +215,22 @@ function Settings() {
                                         />
                                     </div>
                                     <div>
-                                        <label className={labelClass}>Main Bio Paragraph</label>
+                                        <label className={labelClass}>Main Bio Paragraph (Homepage)</label>
                                         <textarea
                                             value={bio}
                                             onChange={(e) => setBio(e.target.value)}
                                             placeholder='Write your full profile summary here...'
                                             className='w-full min-h-[100px] rounded-xl p-[14px] text-gray-800 text-[14px] placeholder-gray-300 outline-none focus:ring-2 focus:ring-gray-300 bg-gray-50 border border-gray-200 resize-y'
                                             required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className={labelClass}>About Page Biography Paragraph</label>
+                                        <textarea
+                                            value={aboutBio}
+                                            onChange={(e) => setAboutBio(e.target.value)}
+                                            placeholder='Write your detailed bio for the About page here...'
+                                            className='w-full min-h-[120px] rounded-xl p-[14px] text-gray-800 text-[14px] placeholder-gray-300 outline-none focus:ring-2 focus:ring-gray-300 bg-gray-50 border border-gray-200 resize-y'
                                         />
                                     </div>
                                 </div>
@@ -247,7 +262,7 @@ function Settings() {
                                         />
                                     </div>
                                 </div>
-                                <div className='grid grid-cols-1 md:grid-cols-3 gap-[16px]'>
+                                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[16px]'>
                                     <div>
                                         <label className={labelClass}>GitHub URL</label>
                                         <input
@@ -275,6 +290,16 @@ function Settings() {
                                             value={instagramUrl}
                                             onChange={(e) => setInstagramUrl(e.target.value)}
                                             placeholder='https://instagram.com/...'
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className={labelClass}>WhatsApp Link / Number</label>
+                                        <input
+                                            type='text'
+                                            value={whatsappUrl}
+                                            onChange={(e) => setWhatsappUrl(e.target.value)}
+                                            placeholder='e.g. +919876543210'
                                             className={inputClass}
                                         />
                                     </div>

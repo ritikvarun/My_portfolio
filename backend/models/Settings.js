@@ -52,6 +52,14 @@ const settingsSchema = new mongoose.Schema({
   aboutImage: {
     type: String,
     default: '/images/Me/Me2.jpg'
+  },
+  whatsappUrl: {
+    type: String,
+    default: ''
+  },
+  aboutBio: {
+    type: String,
+    default: "Hey there, I'm Ritik Varun, a BCA student and an aspiring Full Stack Developer currently focused on building a strong foundation in MERN stack development. I’m currently pursuing my BCA degree at Uttam Institute of Technology and Management (affiliated with Dr. Bhim Rao Ambedkar University, Agra). I love working on projects that combine modern web technologies with fresh ideas—whether it’s creating responsive, scalable websites or exploring AI tools. I enjoy pushing my limits and learning every day. Apart from coding, I stay curious about design and emerging technologies, because in today’s fast-changing digital world, I believe being a lifelong learner is the real superpower."
   }
 }, { timestamps: true });
 
