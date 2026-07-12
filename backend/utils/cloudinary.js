@@ -43,11 +43,6 @@ const uploadToCloudinary = async (localFilePath, folder = 'portfolio') => {
       resource_type: resourceType // raw for PDFs, auto for images
     };
 
-    if (isPdf) {
-      const filename = localFilePath.split(/[\\/]/).pop();
-      uploadOptions.headers = `Content-Disposition: attachment; filename="${filename}"`;
-    }
-
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(localFilePath, uploadOptions);
 
