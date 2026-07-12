@@ -28,16 +28,6 @@ const resolveImage = (path) => {
   return cleanPath;
 };
 
-// For CV/PDF — adds fl_attachment to Cloudinary raw URLs so browser downloads instead of opening
-const resolveCV = (path) => {
-  if (!path) return "";
-  // Cloudinary raw URL — inject fl_attachment to force download
-  if (path.includes('res.cloudinary.com') && path.includes('/raw/upload/')) {
-    return path.replace('/raw/upload/', '/raw/upload/fl_attachment/');
-  }
-  return resolveImage(path);
-};
-
 const resolveWhatsappUrl = (val) => {
   if (!val) return "";
   if (val.startsWith('http://') || val.startsWith('https://')) {
@@ -133,10 +123,8 @@ const HeroMain = () => {
           >
             <Button variation="primary">
               <a
-                href={resolveCV(settings.resumeUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                download
+                href={`${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '') : 'http://localhost:5000'}/api/download-cv`}
+                download="Ritik_Varun_CV.pdf"
               >
                 Download CV
               </a>

@@ -40,6 +40,7 @@ app.use('/api/certificates', require('./routes/certificateRoutes'));
 app.use('/api/settings', require('./routes/settingsRoutes'));
 app.use('/api/notes', require('./routes/noteRoutes'));
 app.use('/api/upload', require('./routes/uploadRoute'));
+app.use('/api/download-cv', require('./routes/downloadRoute'));
 
 // Root Endpoint
 app.get('/', (req, res) => {
