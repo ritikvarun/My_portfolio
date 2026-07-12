@@ -22,7 +22,9 @@ app.use(cors({
     'http://127.0.0.1:5173',
     // Production
     'https://my-portfolio-amber-eta-87.vercel.app',
-    'https://my-portfolio-admin-gamma.vercel.app'
+    'https://my-portfolio-admin-gamma.vercel.app',
+    'https://www.ritikvarun.me',
+    'https://ritikvarun.me'
   ],
   credentials: true
 }));
