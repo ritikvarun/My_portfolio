@@ -18,10 +18,10 @@ export const metadata = {
     title: "Notes & Code Snippets | Ritik Varun",
     description:
       "A collection of developer guides, code snippets, configurations, and tech solutions published by Ritik Varun.",
-    url: "https://www.ritikvarun.my.id/notes",
+    url: "https://www.ritikvarun.me/notes",
   },
   alternates: {
-    canonical: "https://www.ritikvarun.my.id/notes",
+    canonical: "https://www.ritikvarun.me/notes",
   },
 };
 

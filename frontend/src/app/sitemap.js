@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://www.ritikvarun.my.id";
+  const baseUrl = "https://www.ritikvarun.me";
 
   return [
     {

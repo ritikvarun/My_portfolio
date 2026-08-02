@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://www.ritikvarun.my.id/sitemap.xml",
+    sitemap: "https://www.ritikvarun.me/sitemap.xml",
   };
 }

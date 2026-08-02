@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ritikvarun.my.id/sitemap.xml
+Sitemap: https://www.ritikvarun.me/sitemap.xml

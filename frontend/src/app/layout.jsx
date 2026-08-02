@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata = {
-  metadataBase: new URL("https://www.ritikvarun.my.id"),
+  metadataBase: new URL("https://www.ritikvarun.me"),
   title: {
     default: "Ritik Varun | Full Stack & Web Developer Portfolio",
     template: "%s | Ritik Varun",
@@ -29,7 +29,7 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://www.ritikvarun.my.id",
+    url: "https://www.ritikvarun.me",
     title: "Ritik Varun | Web Developer Portfolio",
     siteName: "Ritik Varun Portfolio",
     description:
@@ -61,7 +61,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.ritikvarun.my.id",
+    canonical: "https://www.ritikvarun.me",
   },
   icons: {
     icon: "/images/logo.svg",
@@ -76,10 +76,10 @@ export default function RootLayout({ children }) {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://www.ritikvarun.my.id/#person",
+        "@id": "https://www.ritikvarun.me/#person",
         name: "Ritik Varun",
         alternateName: ["Ritik", "varun", "ritik varun", "varun ritik"],
-        url: "https://www.ritikvarun.my.id",
+        url: "https://www.ritikvarun.me",
         jobTitle: "Web Developer & Full Stack Engineer",
         sameAs: [
           "https://github.com/ritikvarun",
@@ -90,11 +90,11 @@ export default function RootLayout({ children }) {
       },
       {
         "@type": "WebSite",
-        "@id": "https://www.ritikvarun.my.id/#website",
-        url: "https://www.ritikvarun.my.id",
+        "@id": "https://www.ritikvarun.me/#website",
+        url: "https://www.ritikvarun.me",
         name: "Ritik Varun Portfolio",
         publisher: {
-          "@id": "https://www.ritikvarun.my.id/#person",
+          "@id": "https://www.ritikvarun.me/#person",
         },
       },
     ],

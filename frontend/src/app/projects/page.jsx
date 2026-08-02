@@ -18,10 +18,10 @@ export const metadata = {
     title: "Projects | Ritik Varun Portfolio",
     description:
       "Explore web development and full-stack software projects created by Ritik Varun.",
-    url: "https://www.ritikvarun.my.id/projects",
+    url: "https://www.ritikvarun.me/projects",
   },
   alternates: {
-    canonical: "https://www.ritikvarun.my.id/projects",
+    canonical: "https://www.ritikvarun.me/projects",
   },
 };
 
