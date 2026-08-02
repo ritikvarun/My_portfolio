@@ -18,7 +18,7 @@ const Navbar = () => {
         }}
         className="flex items-center gap-2"
       >
-        <Image src="/images/logo.svg" alt="logo" width={40} height={40} />
+        <Image src="/images/logo.svg" alt="Ritik Varun Portfolio Logo" width={40} height={40} />
         <h1 className="text-xl font-bold text-black">Ritik</h1>
       </div>
 

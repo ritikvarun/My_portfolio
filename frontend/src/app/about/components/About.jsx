@@ -27,7 +27,7 @@ const about = () => {
               >
                 <Image
                   src="/images/About/me4.jpeg"
-                  alt="Ritik"
+                  alt="Ritik Varun - Full Stack Web Developer"
                   fill
                   sizes="(max-width: 768px) 55vw, 25vw"
                   style={{ objectFit: "cover" }}
@@ -51,7 +51,7 @@ const about = () => {
               >
                 <Image
                   src="/images/About/me6.jpeg"
-                  alt="Ritik"
+                  alt="Ritik Varun - Full Stack Web Developer"
                   fill
                   sizes="(max-width: 768px) 40vw, 20vw"
                   style={{ objectFit: "cover" }}
@@ -77,7 +77,7 @@ const about = () => {
               >
                 <Image
                   src="/images/About/E4.png"
-                  alt="Ritik"
+                  alt="Ritik Varun - Full Stack Web Developer"
                   fill
                   sizes="(max-width: 768px) 40vw, 20vw"
                   style={{ objectFit: "cover" }}

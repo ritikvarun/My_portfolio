@@ -122,7 +122,7 @@ export default function Education() {
                     src="/images/Education/E1.jpg"
                     width={400}
                     height={225}
-                    alt="Education"
+                    alt="Ritik Varun Education and Academic Campus"
                     className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function Education() {
                     src="/images/Education/E5.jpeg"
                     width={400}
                     height={225}
-                    alt="Education"
+                    alt="Ritik Varun Education and Academic Campus"
                     className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
@@ -140,7 +140,7 @@ export default function Education() {
                     src="/images/Education/E2.jpg"
                     width={400}
                     height={225}
-                    alt="Education"
+                    alt="Ritik Varun Education and Academic Campus"
                     className="rounded-lg w-full h-full object-cover transition-all duration-300 ease-in-out"
                   />
                 </div>
