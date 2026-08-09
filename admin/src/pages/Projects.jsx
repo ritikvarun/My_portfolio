@@ -215,6 +215,8 @@ function Projects() {
                                 >
                                     <option value="Frontend">Frontend</option>
                                     <option value="Full Stack">Full Stack</option>
+                                    <option value="Website Template">Website Template</option>
+                                    <option value="Creative Website">Creative Website</option>
                                     <option value="AI Project">AI Project</option>
                                     <option value="Other">Other</option>
                                 </select>

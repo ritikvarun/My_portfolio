@@ -26,7 +26,7 @@ const projectSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Full Stack', 'Frontend', 'AI Project', 'Other'],
+    enum: ['Full Stack', 'Frontend', 'Website Template', 'Creative Website', 'AI Project', 'Other'],
     default: 'Frontend'
   }
 }, { timestamps: true });

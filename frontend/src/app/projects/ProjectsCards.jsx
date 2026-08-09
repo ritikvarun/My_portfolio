@@ -30,7 +30,7 @@ const ProjectsSection = () => {
     getProjects().then(setProjects);
   }, []);
 
-  const categories = ["Full Stack", "Frontend", "AI Project", "Other"];
+  const categories = ["Full Stack", "Frontend", "Website Template", "Creative Website", "AI Project", "Other"];
 
   const getProjectsByCategory = (cat) => {
     return projects.filter(p => {
