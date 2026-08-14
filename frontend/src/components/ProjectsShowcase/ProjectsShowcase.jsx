@@ -72,7 +72,7 @@ export default function ProjectsShowcase() {
               text="PROJECTS"
               animateOn="view"
               loop={true}
-              autoInterval={2000}
+              autoInterval={3000}
               speed={45}
               maxIterations={12}
               sequential={true}

@@ -192,7 +192,7 @@ const HeroMain = () => {
                   text={settings.developerName || "Ritik Varun"}
                   animateOn="view"
                   loop={true}
-                  autoInterval={2000}
+                  autoInterval={3000}
                   speed={45}
                   maxIterations={12}
                   encryptedClassName="text-gray-400 font-mono"
@@ -220,7 +220,7 @@ const HeroMain = () => {
                   text={settings.developerTitle || "Full Stack MERN Developer"}
                   animateOn="view"
                   loop={true}
-                  autoInterval={2000}
+                  autoInterval={3000}
                   speed={35}
                   maxIterations={14}
                   encryptedClassName="text-gray-400 font-mono"
@@ -295,7 +295,7 @@ const HeroMain = () => {
                     speed={30}
                     maxIterations={10}
                     loop={true}
-                    autoInterval={2000}
+                    autoInterval={3000}
                     encryptedClassName="text-zinc-400 font-mono"
                   />
                 </h2>

@@ -16,7 +16,7 @@ export default function DecryptedText({
   animateOn = 'hover',
   clickMode = 'once',
   loop = false,
-  autoInterval = 4000,
+  autoInterval = 3000,
   ...props
 }) {
   const [displayText, setDisplayText] = useState(text);

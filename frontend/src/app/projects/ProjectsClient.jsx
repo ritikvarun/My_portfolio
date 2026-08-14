@@ -132,7 +132,7 @@ export default function ProjectsClient() {
                   text="Projects"
                   animateOn="view"
                   loop={true}
-                  autoInterval={2000}
+                  autoInterval={3000}
                   speed={45}
                   maxIterations={12}
                   sequential={true}

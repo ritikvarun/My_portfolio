@@ -79,14 +79,14 @@ const Footer = () => {
               Available for Opportunities
             </div>
 
-            {/* Display Heading with Auto 2s Decrypted Animation */}
+            {/* Display Heading with Auto 3s Decrypted Animation */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-950 leading-[1.15]">
               <DecryptedText
                 text="Let’s create something extraordinary together."
                 speed={30}
                 maxIterations={10}
                 loop={true}
-                autoInterval={2000}
+                autoInterval={3000}
                 encryptedClassName="text-slate-400 font-mono"
               />
             </h2>

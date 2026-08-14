@@ -89,7 +89,7 @@ const AboutClient = () => {
                     text="me"
                     animateOn="view"
                     loop={true}
-                    autoInterval={2000}
+                    autoInterval={3000}
                     speed={50}
                     maxIterations={10}
                     encryptedClassName="text-gray-400 font-mono"
