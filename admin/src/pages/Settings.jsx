@@ -175,7 +175,7 @@ function Settings() {
                 {/* Header */}
                 <div className='mb-[28px]'>
                     <h1 className='text-[26px] font-bold text-gray-900'>Profile Settings</h1>
-                    <p className='text-gray-400 text-[14px] mt-[4px]'>Customize your developer details, hero section bio, resume CV and social links</p>
+                    <p className='text-gray-400 text-[14px] mt-[4px]'>Customize your developer details, hero section bio, photos and social links</p>
                 </div>
 
                 {loading ? (
