@@ -31,14 +31,12 @@ const Navbar = () => {
       <ul className="hidden md:flex gap-6 text-black font-medium">
         <Link href="/about">About</Link>
         <Link href="/projects">Projects</Link>
-        <Link href="/notes">Notes & Code</Link>
       </ul>
       {/* Mobile Box Menu */}
       {open && (
         <div className="md:hidden items-center absolute top-14 right-4 bg-black/90 rounded-xl shadow-lg p-4 w-40 flex flex-col gap-3 text-white font-medium">
           <Link href="/about" onClick={() => setOpen(false)}>About</Link>
           <Link href="/projects" onClick={() => setOpen(false)}>Projects</Link>
-          <Link href="/notes" onClick={() => setOpen(false)}>Notes & Code</Link>
         </div>
       )}
     </nav>

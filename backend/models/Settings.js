@@ -23,11 +23,11 @@ const settingsSchema = new mongoose.Schema({
   },
   contactPhone: {
     type: String,
-    default: ''
+    default: '9808433521'
   },
   contactAddress: {
     type: String,
-    default: ''
+    default: 'Agra, Uttar Pradesh, India'
   },
   githubUrl: {
     type: String,
@@ -55,7 +55,7 @@ const settingsSchema = new mongoose.Schema({
   },
   whatsappUrl: {
     type: String,
-    default: ''
+    default: 'https://wa.me/919808843521'
   },
   aboutBio: {
     type: String,

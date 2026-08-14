@@ -1,5 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import CustomCursor from "@/components/CustomCursor/CustomCursor";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp/FloatingWhatsApp";
 
 export const metadata = {
   metadataBase: new URL("https://www.ritikvarun.me"),
@@ -8,7 +10,7 @@ export const metadata = {
     template: "%s | Ritik Varun",
   },
   description:
-    "Official Portfolio of Ritik Varun - Web Developer & Full Stack Software Engineer. Explore my projects, skills, education, and technical code notes.",
+    "Official Portfolio of Ritik Varun - Web Developer & Full Stack Software Engineer. Explore my projects, skills, and journey.",
   author: "Ritik Varun",
   applicationName: "Ritik Varun Portfolio",
   keywords: [
@@ -33,7 +35,7 @@ export const metadata = {
     title: "Ritik Varun | Web Developer Portfolio",
     siteName: "Ritik Varun Portfolio",
     description:
-      "Explore Ritik Varun's portfolio featuring modern web applications, frontend & backend projects, and developer notes.",
+      "Explore Ritik Varun's portfolio featuring modern web applications, frontend & backend projects.",
     images: [
       {
         url: "/images/logo.svg",
@@ -110,8 +112,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <CustomCursor />
         <Navbar />
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

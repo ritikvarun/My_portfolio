@@ -1,6 +1,6 @@
 import React from "react";
-
 import HeroMain from "@/components/Hero/HeroMain";
+
 const page = () => {
   return (
     <div>
@@ -10,3 +10,4 @@ const page = () => {
 };
 
 export default page;
+

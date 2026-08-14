@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Achivements from "@/app/about/components/Achivements";
 
 function Wrapper({ children }) {
   return (
@@ -247,9 +246,6 @@ export default function Education() {
                       </div>
                     </motion.div>
                   ))}
-                  {/* Image Certification Section */}
-                  <Achivements />
-                  {/* Image Certification Section */}
                 </AnimatePresence>
               </div>
             </div>

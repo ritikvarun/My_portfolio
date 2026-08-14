@@ -4,7 +4,7 @@ import { FaRegListAlt } from "react-icons/fa";
 import { SiTicktick } from "react-icons/si";
 import { MdDashboard } from "react-icons/md";
 import { TbArrowBackUp } from "react-icons/tb";
-import { FiImage, FiActivity, FiCode } from "react-icons/fi";
+import { FiImage, FiActivity } from "react-icons/fi";
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function Sidebar() {
@@ -14,9 +14,6 @@ function Sidebar() {
     const links = [
         { path: '/', label: 'Dashboard', icon: <MdDashboard /> },
         { path: '/projects', label: 'Projects', icon: <FaRegListAlt /> },
-        { path: '/skills', label: 'Skills', icon: <FiActivity /> },
-        { path: '/certificates', label: 'Certificates', icon: <FiImage /> },
-        { path: '/notes', label: 'Notes & Codes', icon: <FiCode /> },
         { path: '/settings', label: 'Profile Settings', icon: <SiTicktick /> },
     ]
 

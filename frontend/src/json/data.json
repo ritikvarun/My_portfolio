@@ -1,48 +1,94 @@
 {
   "skills": [
     {
-      "name": "HTML 5",
-      "image": "/images/skills/html.png"
+      "name": "React.js",
+      "category": "Frontend",
+      "image": "/images/skills/reactjs.png"
     },
     {
-      "name": "CSS 3",
-      "image": "/images/skills/css.png"
+      "name": "Next.js",
+      "category": "Frontend",
+      "image": "/images/skills/Next.png"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Frontend",
+      "image": "/images/skills/typescript.svg"
     },
     {
       "name": "JavaScript",
-      "image": "images/skills/javascript.png"
-    },
-    {
-      "name": "React JS",
-      "image": "images/skills/reactjs.png"
-    },
-    {
-      "name": "Next JS",
-      "image": "images/skills/Next.png"
+      "category": "Frontend",
+      "image": "/images/skills/javascript.png"
     },
     {
       "name": "Tailwind CSS",
-      "image": "images/skills/tailwind.png"
+      "category": "Frontend",
+      "image": "/images/skills/tailwind.png"
     },
     {
-      "name": "Node JS",
-      "image": "images/skills/nodejs.png"
+      "name": "Node.js",
+      "category": "Backend",
+      "image": "/images/skills/nodejs.png"
+    },
+    {
+      "name": "Express.js",
+      "category": "Backend",
+      "image": "/images/skills/express.svg"
     },
     {
       "name": "MongoDB",
-      "image": "images/skills/mongodb.png"
+      "category": "Backend",
+      "image": "/images/skills/mongodb.png"
+    },
+    {
+      "name": "REST APIs",
+      "category": "Backend",
+      "image": "/images/skills/restapi.svg"
+    },
+    {
+      "name": "Razorpay",
+      "category": "Backend",
+      "image": "/images/skills/razorpay.svg"
     },
     {
       "name": "Git",
-      "image": "images/skills/git.png"
+      "category": "Tools",
+      "image": "/images/skills/git.png"
     },
     {
       "name": "GitHub",
-      "image": "images/skills/github-mark.png"
+      "category": "Tools",
+      "image": "/images/skills/github-mark.png"
     },
     {
-      "name": "Figma",
-      "image": "images/skills/figma.png"
+      "name": "Postman",
+      "category": "Tools",
+      "image": "/images/skills/postman.svg"
+    },
+    {
+      "name": "Vercel",
+      "category": "Tools",
+      "image": "/images/skills/vercel.svg"
+    },
+    {
+      "name": "Render",
+      "category": "Tools",
+      "image": "/images/skills/render.svg"
+    },
+    {
+      "name": "Cloudinary",
+      "category": "Tools",
+      "image": "/images/skills/cloudinary.svg"
+    },
+    {
+      "name": "Technical SEO",
+      "category": "Tools",
+      "image": "/images/skills/seo.svg"
+    },
+    {
+      "name": "Resend",
+      "category": "Backend",
+      "image": "/images/skills/resend.svg"
     }
   ],
 
@@ -50,6 +96,7 @@
     {
       "id": 1,
       "name": "ShopX E-commerce",
+      "category": "Full Stack",
       "description": "Developed a full-stack e-commerce application ",
       "images": [
         "/images/projects/shopx/s1.png",
@@ -63,6 +110,7 @@
     {
       "id": 2,
       "name": "Employee Management System",
+      "category": "Full Stack",
       "description": "Developed a full-stack employee management system ",
       "images": [
         "/images/projects/ems/1.png",
@@ -76,6 +124,7 @@
     {
       "id": 3,
       "name": "Cara E-commerce",
+      "category": "Frontend",
       "description": "Cara E-commerce website built using HTML, CSS, JavaScript ",
       "images": [
         "/images/projects/Cara/C1.png",
@@ -89,6 +138,7 @@
     {
       "id": 4,
       "name": "Linkedin clone",
+      "category": "Frontend",
       "description": "A professional networking platform featuring a modern UI, complete with messaging, feed, profile.",
       "images": [
         "/images/projects/link/1.png",
@@ -99,8 +149,6 @@
       "demo": "https://linkend-in-clone.vercel.app/",
       "github": "https://github.com/ritikvarun/linkendIn-clone"
     }
-    
-    
   ],
 
   "certificates": [
