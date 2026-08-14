@@ -36,7 +36,6 @@ router.post('/', protect, async (req, res) => {
     githubUrl,
     linkedinUrl,
     instagramUrl,
-    resumeUrl,
     profileImage,
     aboutImage,
     whatsappUrl,
@@ -59,7 +58,6 @@ router.post('/', protect, async (req, res) => {
     settings.githubUrl = githubUrl !== undefined ? githubUrl : settings.githubUrl;
     settings.linkedinUrl = linkedinUrl !== undefined ? linkedinUrl : settings.linkedinUrl;
     settings.instagramUrl = instagramUrl !== undefined ? instagramUrl : settings.instagramUrl;
-    settings.resumeUrl = resumeUrl !== undefined ? resumeUrl : settings.resumeUrl;
     settings.profileImage = profileImage !== undefined ? profileImage : settings.profileImage;
     settings.aboutImage = aboutImage !== undefined ? aboutImage : settings.aboutImage;
     settings.whatsappUrl = whatsappUrl !== undefined ? whatsappUrl : settings.whatsappUrl;

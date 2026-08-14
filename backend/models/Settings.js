@@ -41,10 +41,6 @@ const settingsSchema = new mongoose.Schema({
     type: String,
     default: 'https://www.instagram.com/arjun_rk_0021'
   },
-  resumeUrl: {
-    type: String,
-    default: '/RItik.pdf'
-  },
   profileImage: {
     type: String,
     default: '/images/Me/Ritik.jpg'

@@ -52,30 +52,7 @@ const HeroMain = () => {
   }, []);
 
   const handleDownloadCV = () => {
-    if (!settings?.resumeUrl) return;
-    const cvUrl = settings.resumeUrl;
-
-    // For Cloudinary image/upload PDFs — inject fl_attachment to force download
-    if (
-      cvUrl.includes("res.cloudinary.com") &&
-      cvUrl.includes("/image/upload/")
-    ) {
-      const downloadUrl = cvUrl.replace(
-        "/image/upload/",
-        "/image/upload/fl_attachment/",
-      );
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      return;
-    }
-
-    // For anything else — open directly in new tab
-    window.open(cvUrl, "_blank");
+    window.open("/RItik.pdf", "_blank");
   };
 
   return (

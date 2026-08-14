@@ -35,7 +35,6 @@ function Settings() {
     const [githubUrl, setGithubUrl] = useState("")
     const [linkedinUrl, setLinkedinUrl] = useState("")
     const [instagramUrl, setInstagramUrl] = useState("")
-    const [resumeUrl, setResumeUrl] = useState("")
     const [whatsappUrl, setWhatsappUrl] = useState("")
     const [aboutBio, setAboutBio] = useState("")
     
@@ -44,7 +43,6 @@ function Settings() {
     const [aboutImage, setAboutImage] = useState("")
 
     // Upload loaders
-    const [uploadingCV, setUploadingCV] = useState(false)
     const [uploadingProfile, setUploadingProfile] = useState(false)
     const [uploadingAboutImg, setUploadingAboutImg] = useState(false)
 
@@ -63,7 +61,6 @@ function Settings() {
             setGithubUrl(data.githubUrl || "")
             setLinkedinUrl(data.linkedinUrl || "")
             setInstagramUrl(data.instagramUrl || "")
-            setResumeUrl(data.resumeUrl || "")
             setWhatsappUrl(data.whatsappUrl || "")
             setAboutBio(data.aboutBio || "")
             setProfileImage(data.profileImage || "")
@@ -96,7 +93,6 @@ function Settings() {
                 instagramUrl,
                 whatsappUrl,
                 aboutBio,
-                resumeUrl,
                 profileImage,
                 aboutImage
             }
@@ -117,7 +113,6 @@ function Settings() {
         const file = e.target.files[0]
         if (!file) return
 
-        if (type === 'cv') setUploadingCV(true)
         if (type === 'profile') setUploadingProfile(true)
         if (type === 'aboutImg') setUploadingAboutImg(true)
 
@@ -137,13 +132,11 @@ function Settings() {
                 const uploadedUrl = res.data.fileUrl
 
                 // Set state
-                if (type === 'cv') setResumeUrl(uploadedUrl)
                 if (type === 'profile') setProfileImage(uploadedUrl)
                 if (type === 'aboutImg') setAboutImage(uploadedUrl)
 
                 // Auto-save the uploaded URL immediately to DB
                 const savePayload = {}
-                if (type === 'cv') savePayload.resumeUrl = uploadedUrl
                 if (type === 'profile') savePayload.profileImage = uploadedUrl
                 if (type === 'aboutImg') savePayload.aboutImage = uploadedUrl
 
@@ -152,7 +145,7 @@ function Settings() {
                         headers,
                         withCredentials: true
                     })
-                    toast.success(`${type === 'cv' ? 'CV/Resume' : 'Image'} uploaded & saved!`)
+                    toast.success(`Image uploaded & saved!`)
                 } catch (saveErr) {
                     console.error('Auto-save failed:', saveErr)
                     toast.success('File uploaded! Click "Save Settings" to save.')
@@ -164,7 +157,6 @@ function Settings() {
             console.error('Upload error details:', error?.response?.data || error.message)
             toast.error('Upload failed: ' + (error?.response?.data?.message || error.message || 'Server error'))
         } finally {
-            setUploadingCV(false)
             setUploadingProfile(false)
             setUploadingAboutImg(false)
         }
@@ -329,18 +321,8 @@ function Settings() {
 
                             {/* Attachments & Images */}
                             <div>
-                                <h3 className='text-[15px] font-bold text-gray-800 border-b border-gray-100 pb-2 mb-4'>4. Profile Images & CV</h3>
-                                <div className='grid grid-cols-1 md:grid-cols-3 gap-[16px]'>
-                                    {/* CV Resume upload */}
-                                    <div className='p-[16px] border border-gray-200 rounded-2xl flex flex-col items-center justify-center text-center'>
-                                        <label className={labelClass}>Upload Resume (PDF)</label>
-                                        <label className='flex items-center gap-[8px] justify-center px-[12px] py-[8px] border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 transition-colors text-[12px] font-semibold text-gray-600 w-full mt-2'>
-                                            <FiUpload /> {uploadingCV ? 'Uploading...' : 'Choose PDF'}
-                                            <input type='file' accept='.pdf' onChange={(e) => handleFileUpload(e, 'cv')} className='hidden' disabled={uploadingCV} />
-                                        </label>
-                                        {resumeUrl && <span className='text-[10px] text-gray-400 mt-2 truncate w-full'>{resumeUrl}</span>}
-                                    </div>
-
+                                <h3 className='text-[15px] font-bold text-gray-800 border-b border-gray-100 pb-2 mb-4'>4. Profile Images</h3>
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-[16px]'>
                                     {/* Profile Image upload */}
                                     <div className='p-[16px] border border-gray-200 rounded-2xl flex flex-col items-center justify-center text-center'>
                                         <label className={labelClass}>Profile Image</label>

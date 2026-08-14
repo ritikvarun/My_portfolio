@@ -14,7 +14,6 @@ const defaultSettings = {
   githubUrl: 'https://github.com/Ritikvarun',
   linkedinUrl: 'https://www.linkedin.com/in/ritik-varun-0b6795274/',
   instagramUrl: 'https://www.instagram.com/arjun_rk_0021',
-  resumeUrl: '/RItik.pdf',
   profileImage: '/images/Me/Ritik.jpg',
   aboutImage: '/images/Me/Me2.jpg',
   whatsappUrl: 'https://wa.me/919808843521',

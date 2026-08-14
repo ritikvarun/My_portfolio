@@ -15,7 +15,6 @@ function Home() {
         developerName: "Ritik Varun",
         developerTitle: "Full Stack MERN Developer",
         contactEmail: "ritikvarun64@gmail.com",
-        resumeUrl: "/RItik.pdf",
         githubUrl: "https://github.com/Ritikvarun",
         linkedinUrl: "https://www.linkedin.com/in/ritik-varun-0b6795274/",
         bio: "Not that average pick-me guy. I'm a full-stack developer, designer, and a tech enthusiast. I love to design beautiful and user-friendly interfaces. Always curious to learn new things :)"
@@ -109,10 +108,6 @@ function Home() {
                                 <div className='flex justify-between border-b border-gray-100 pb-[10px]'>
                                     <span className='text-[14px] text-gray-400 font-medium'>Email</span>
                                     <span className='text-[14px] text-gray-800 font-semibold'>{settings.contactEmail}</span>
-                                </div>
-                                <div className='flex justify-between border-b border-gray-100 pb-[10px]'>
-                                    <span className='text-[14px] text-gray-400 font-medium'>CV Resume Path</span>
-                                    <span className='text-[14px] text-gray-800 font-semibold'>{settings.resumeUrl}</span>
                                 </div>
                                 <div className='flex flex-col gap-[4px] mt-[10px]'>
                                     <span className='text-[12px] text-gray-400 font-semibold uppercase tracking-wider'>Social URLs</span>
