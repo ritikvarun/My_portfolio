@@ -69,8 +69,8 @@ const AboutClient = () => {
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+            {/* Left Content Column (Below photo on mobile, left on desktop) */}
+            <div className="lg:col-span-6 order-2 lg:order-1 space-y-6 sm:space-y-7">
               {/* Heading */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,9 @@ const AboutClient = () => {
                   </span>
                   <DecryptedText
                     text="me"
-                    animateOn="inViewHover"
+                    animateOn="view"
+                    loop={true}
+                    autoInterval={2000}
                     speed={50}
                     maxIterations={10}
                     encryptedClassName="text-gray-400 font-mono"
@@ -184,12 +186,12 @@ const AboutClient = () => {
               </motion.div>
             </div>
 
-            {/* Right Visual Image (Enlarged) */}
+            {/* Right Visual Image (Enlarged - on top on mobile, right on desktop) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-6 relative flex justify-center lg:justify-end items-center"
+              className="lg:col-span-6 order-1 lg:order-2 relative flex justify-center lg:justify-end items-center"
             >
               {/* Soft Ambient Gray Glow */}
               <div className="absolute w-80 h-80 sm:w-[450px] sm:h-[450px] rounded-full bg-slate-400/20 blur-3xl -z-1 pointer-events-none" />

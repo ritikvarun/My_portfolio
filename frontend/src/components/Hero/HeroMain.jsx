@@ -191,6 +191,8 @@ const HeroMain = () => {
                 <DecryptedText
                   text={settings.developerName || "Ritik Varun"}
                   animateOn="view"
+                  loop={true}
+                  autoInterval={2000}
                   speed={45}
                   maxIterations={12}
                   encryptedClassName="text-gray-400 font-mono"
@@ -215,8 +217,10 @@ const HeroMain = () => {
                 }}
               >
                 <DecryptedText
-                  text={settings.developerTitle || "Full Stack Developer"}
-                  animateOn="inViewHover"
+                  text={settings.developerTitle || "Full Stack MERN Developer"}
+                  animateOn="view"
+                  loop={true}
+                  autoInterval={2000}
                   speed={35}
                   maxIterations={14}
                   encryptedClassName="text-gray-400 font-mono"
@@ -286,7 +290,14 @@ const HeroMain = () => {
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 leading-[1.2]">
-                  Crafting Modern Web Experiences with Passion & Code
+                  <DecryptedText
+                    text="Crafting Modern Web Experiences with Passion & Code"
+                    speed={30}
+                    maxIterations={10}
+                    loop={true}
+                    autoInterval={2000}
+                    encryptedClassName="text-zinc-400 font-mono"
+                  />
                 </h2>
 
                 <div className="p-6 sm:p-7 rounded-3xl bg-white/70 backdrop-blur-md border border-zinc-200/80 shadow-lg shadow-black/5 space-y-4">

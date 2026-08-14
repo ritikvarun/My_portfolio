@@ -20,6 +20,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { getSettings } from "@/lib/api";
+import DecryptedText from "@/components/ui/DecryptedText";
 
 const resolveWhatsappUrl = (val) => {
   if (!val) return "https://wa.me/919808843521";
@@ -78,13 +79,16 @@ const Footer = () => {
               Available for Opportunities
             </div>
 
-            {/* Display Heading */}
+            {/* Display Heading with Auto 2s Decrypted Animation */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-950 leading-[1.15]">
-              Let’s create something{" "}
-              <span className="font-serif italic font-normal text-slate-600" style={{ fontFamily: "Georgia, serif" }}>
-                extraordinary
-              </span>{" "}
-              together.
+              <DecryptedText
+                text="Let’s create something extraordinary together."
+                speed={30}
+                maxIterations={10}
+                loop={true}
+                autoInterval={2000}
+                encryptedClassName="text-slate-400 font-mono"
+              />
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-lg">
