@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const words = [
-  "WEB ARCHITECT",
+  "WEB DEVELOPER",
   "FULL STACK DEVELOPER",
-  "UI / UX CRAFTSMAN",
+  "MERN DEVELOPER",
   "RITIK VARUN",
 ];
 
