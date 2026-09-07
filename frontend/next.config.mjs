@@ -12,6 +12,27 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/RItik.pdf',
+        destination: '/Ritik.pdf',
+      },
+      {
+        source: '/ritik.pdf',
+        destination: '/Ritik.pdf',
+      },
+      {
+        source: '/resume.pdf',
+        destination: '/Ritik.pdf',
+      },
+      {
+        source: '/cv.pdf',
+        destination: '/Ritik.pdf',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
+

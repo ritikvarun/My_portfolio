@@ -38,8 +38,14 @@ const AboutClient = () => {
     getSettings().then(setSettings);
   }, []);
 
-  const handleDownloadCV = () => {
-    window.open("/Ritik.pdf", "_blank");
+  const handleDownloadCV = (e) => {
+    if (e) e.preventDefault();
+    const link = document.createElement("a");
+    link.href = "/Ritik.pdf";
+    link.download = "Ritik_Varun_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -103,13 +109,15 @@ const AboutClient = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-wrap items-center gap-4 pt-2"
               >
-                {/* My Resume Button */}
-                <button
+                {/* My Resume Button (Direct Download) */}
+                <a
+                  href="/Ritik.pdf"
+                  download="Ritik_Varun_Resume.pdf"
                   onClick={handleDownloadCV}
-                  className="px-7 py-3 rounded-xl bg-gray-700 hover:bg-gray-800 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center px-7 py-3 rounded-xl bg-gray-700 hover:bg-gray-800 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-center"
                 >
                   My Resume
-                </button>
+                </a>
 
                 {/* My Projects Button */}
                 <Link

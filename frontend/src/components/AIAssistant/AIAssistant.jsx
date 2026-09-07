@@ -100,7 +100,12 @@ export default function AIAssistant() {
           }, 450);
         } else if (res.action.type === "DOWNLOAD_CV") {
           setTimeout(() => {
-            window.open(res.action.url || "http://localhost:5000/api/download-cv", "_blank");
+            const link = document.createElement("a");
+            link.href = "/Ritik.pdf";
+            link.download = "Ritik_Varun_Resume.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
           }, 450);
         } else if (res.action.type === "WHATSAPP") {
           setTimeout(() => {
@@ -322,9 +327,17 @@ export default function AIAssistant() {
 
                         {msg.action.type === "DOWNLOAD_CV" && (
                           <a
-                            href={msg.action.url || "http://localhost:5000/api/download-cv"}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/Ritik.pdf"
+                            download="Ritik_Varun_Resume.pdf"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const link = document.createElement("a");
+                              link.href = "/Ritik.pdf";
+                              link.download = "Ritik_Varun_Resume.pdf";
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }}
                             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
                             <FileText className="w-3.5 h-3.5 text-gray-300" />
