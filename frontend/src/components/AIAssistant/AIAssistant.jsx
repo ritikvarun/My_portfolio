@@ -197,21 +197,21 @@ export default function AIAssistant() {
           onClick={() => setIsOpen((prev) => !prev)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="group relative isolate flex items-center justify-center p-3 sm:py-3 sm:px-4 bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white rounded-full shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all duration-300 cursor-pointer border border-indigo-400/30"
+          className="group relative isolate flex items-center justify-center p-3 sm:py-3 sm:px-4 bg-gray-900 hover:bg-black text-gray-100 rounded-full shadow-2xl shadow-black/60 transition-all duration-300 cursor-pointer border-2 border-gray-700 hover:border-gray-500"
           title="Chat with Ritik AI"
           aria-label="Open AI Assistant"
         >
           {/* Subtle Pulse Ring */}
-          <span className="absolute inset-0 rounded-full bg-indigo-400 opacity-40 animate-ping pointer-events-none -z-10" />
+          <span className="absolute inset-0 rounded-full bg-gray-500 opacity-25 animate-ping pointer-events-none -z-10" />
 
           {/* Icon */}
           <div className="relative flex items-center justify-center">
-            <Bot className="w-6 h-6 text-white shrink-0" />
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 absolute -top-1.5 -right-1.5 animate-pulse" />
+            <Bot className="w-6 h-6 text-gray-100 shrink-0" />
+            <Sparkles className="w-3.5 h-3.5 text-yellow-400 absolute -top-1.5 -right-1.5 animate-pulse" />
           </div>
 
           {/* Expandable Label */}
-          <span className="hidden sm:inline-block ml-2.5 text-sm font-semibold tracking-wide text-white drop-shadow-sm">
+          <span className="hidden sm:inline-block ml-2.5 text-sm font-semibold tracking-wide text-gray-100 drop-shadow-sm font-sans">
             Ask Ritik AI
           </span>
         </motion.button>
@@ -225,32 +225,32 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.94 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="fixed bottom-20 left-4 right-4 sm:right-auto sm:left-6 sm:w-[420px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-6.5rem)] z-[99999] bg-zinc-950/95 backdrop-blur-2xl border border-zinc-800/80 rounded-3xl shadow-2xl shadow-black/80 flex flex-col overflow-hidden select-text"
+            className="fixed bottom-20 left-4 right-4 sm:right-auto sm:left-6 sm:w-[420px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-6.5rem)] z-[99999] bg-gray-950/95 backdrop-blur-2xl border-2 border-gray-800 rounded-3xl shadow-2xl shadow-black flex flex-col overflow-hidden select-text"
           >
             {/* Header */}
-            <div className="px-5 py-3.5 bg-gradient-to-r from-zinc-900/90 via-indigo-950/40 to-zinc-900/90 border-b border-zinc-800/70 flex items-center justify-between">
+            <div className="px-5 py-3.5 bg-gray-900 border-b border-gray-800 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="relative w-9 h-9 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-500 p-0.5 shadow-md shadow-indigo-500/30">
-                  <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center">
-                    <Bot className="w-5 h-5 text-cyan-400" />
+                <div className="relative w-9 h-9 rounded-full bg-gray-800 border border-gray-700 p-0.5 shadow-md">
+                  <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center">
+                    <Bot className="w-5 h-5 text-gray-200" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-zinc-950 rounded-full" />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-gray-900 rounded-full" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h3 className="text-sm font-bold text-white tracking-wide">Ritik AI</h3>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-gray-800 text-gray-300 border border-gray-700">
                       LangChain
                     </span>
                   </div>
-                  <p className="text-[11px] text-zinc-400">Powered by Google Gemini RAG</p>
+                  <p className="text-[11px] text-gray-400">Powered by Google Gemini RAG</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-1">
                 <button
                   onClick={handleReset}
-                  className="p-1.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 rounded-lg transition-colors cursor-pointer"
+                  className="p-1.5 text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded-lg transition-colors cursor-pointer"
                   title="Reset conversation"
                   aria-label="Reset chat"
                 >
@@ -258,7 +258,7 @@ export default function AIAssistant() {
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 rounded-lg transition-colors cursor-pointer"
+                  className="p-1.5 text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded-lg transition-colors cursor-pointer"
                   title="Close assistant"
                   aria-label="Close assistant"
                 >
@@ -268,15 +268,15 @@ export default function AIAssistant() {
             </div>
 
             {/* Chat Messages Body */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
                   className={`flex gap-2.5 ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {msg.sender === "ai" && (
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center shrink-0 mt-1 shadow-sm">
-                      <Bot className="w-4 h-4 text-white" />
+                    <div className="w-7 h-7 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center shrink-0 mt-1 shadow-sm">
+                      <Bot className="w-4 h-4 text-gray-200" />
                     </div>
                   )}
 
@@ -284,8 +284,8 @@ export default function AIAssistant() {
                     <div
                       className={`px-4 py-3 rounded-2xl text-[13.5px] shadow-md ${
                         msg.sender === "user"
-                          ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-br-none"
-                          : "bg-zinc-900/90 border border-zinc-800 text-zinc-200 rounded-bl-none"
+                          ? "bg-gray-800 border border-gray-700 text-white rounded-br-none"
+                          : "bg-gray-900/95 border border-gray-800 text-gray-200 rounded-bl-none"
                       }`}
                     >
                       {msg.sender === "user" ? (
@@ -303,9 +303,9 @@ export default function AIAssistant() {
                             href={msg.action.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <ExternalLink className="w-3.5 h-3.5 text-gray-300" />
                             {msg.action.label || "Open Link"} 🚀
                           </a>
                         )}
@@ -313,9 +313,9 @@ export default function AIAssistant() {
                         {msg.action.type === "NAVIGATE" && (
                           <a
                             href={msg.action.path}
-                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <ExternalLink className="w-3.5 h-3.5 text-gray-300" />
                             {msg.action.label || "Navigate Page"}
                           </a>
                         )}
@@ -325,9 +325,9 @@ export default function AIAssistant() {
                             href={msg.action.url || "http://localhost:5000/api/download-cv"}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-semibold shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
-                            <FileText className="w-3.5 h-3.5" />
+                            <FileText className="w-3.5 h-3.5 text-gray-300" />
                             {msg.action.label || "Download Resume (CV)"}
                           </a>
                         )}
@@ -347,23 +347,23 @@ export default function AIAssistant() {
                         {msg.action.type === "VIEW_PROJECT" && (
                           <a
                             href="/projects"
-                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <ExternalLink className="w-3.5 h-3.5 text-gray-300" />
                             {msg.action.label || "Explore Projects"}
                           </a>
                         )}
                       </div>
                     )}
 
-                    <span className="text-[10px] text-zinc-500 mt-1 px-1">
+                    <span className="text-[10px] text-gray-500 mt-1 px-1">
                       {new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </span>
                   </div>
 
                   {msg.sender === "user" && (
-                    <div className="w-7 h-7 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 mt-1">
-                      <User className="w-4 h-4 text-zinc-300" />
+                    <div className="w-7 h-7 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center shrink-0 mt-1">
+                      <User className="w-4 h-4 text-gray-300" />
                     </div>
                   )}
                 </div>
@@ -372,13 +372,13 @@ export default function AIAssistant() {
               {/* Typing animation indicator */}
               {loading && (
                 <div className="flex gap-2.5 justify-start items-center">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center shrink-0 shadow-sm">
-                    <Bot className="w-4 h-4 text-white" />
+                  <div className="w-7 h-7 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center shrink-0 shadow-sm">
+                    <Bot className="w-4 h-4 text-gray-200" />
                   </div>
-                  <div className="px-4 py-3 bg-zinc-900/90 border border-zinc-800 rounded-2xl rounded-bl-none flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:-0.3s]" />
-                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-bounce [animation-delay:-0.15s]" />
-                    <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce" />
+                  <div className="px-4 py-3 bg-gray-900 border border-gray-800 rounded-2xl rounded-bl-none flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.3s]" />
+                    <span className="w-2 h-2 rounded-full bg-gray-300 animate-bounce [animation-delay:-0.15s]" />
+                    <span className="w-2 h-2 rounded-full bg-gray-100 animate-bounce" />
                   </div>
                 </div>
               )}
@@ -388,12 +388,12 @@ export default function AIAssistant() {
 
             {/* Quick Prompt Suggestion Chips (when only 1 or 2 messages exist) */}
             {messages.length <= 3 && !loading && (
-              <div className="px-4 py-2 border-t border-zinc-850 bg-zinc-950/60 overflow-x-auto scrollbar-none flex gap-2">
+              <div className="px-4 py-2 border-t border-gray-850 bg-gray-950/80 overflow-x-auto scrollbar-none flex gap-2">
                 {SUGGESTED_PROMPTS.map((prompt, pIdx) => (
                   <button
                     key={pIdx}
                     onClick={() => handleSend(prompt)}
-                    className="shrink-0 px-3 py-1.5 text-xs bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white rounded-full border border-zinc-750 hover:border-indigo-500/40 transition-all cursor-pointer shadow-sm"
+                    className="shrink-0 px-3 py-1.5 text-xs bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white rounded-full border border-gray-800 hover:border-gray-600 transition-all cursor-pointer shadow-sm"
                   >
                     ✨ {prompt}
                   </button>
@@ -402,13 +402,13 @@ export default function AIAssistant() {
             )}
 
             {/* Input Form Bar */}
-            <div className="p-3 bg-zinc-900/90 border-t border-zinc-800/80">
+            <div className="p-3 bg-gray-900 border-t border-gray-800">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleSend();
                 }}
-                className="flex items-center gap-2 bg-zinc-950 border border-zinc-800 focus-within:border-indigo-500/70 rounded-2xl px-3.5 py-1.5 transition-all"
+                className="flex items-center gap-2 bg-gray-950 border border-gray-800 focus-within:border-gray-600 rounded-2xl px-3.5 py-1.5 transition-all"
               >
                 <input
                   ref={inputRef}
@@ -417,7 +417,7 @@ export default function AIAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Ritik's projects, skills, CV..."
-                  className="flex-1 bg-transparent text-white text-xs sm:text-sm placeholder-zinc-500 outline-none py-1.5"
+                  className="flex-1 bg-transparent text-white text-xs sm:text-sm placeholder-gray-500 outline-none py-1.5"
                   disabled={loading}
                 />
                 <button
@@ -425,8 +425,8 @@ export default function AIAssistant() {
                   disabled={!input.trim() || loading}
                   className={`p-2 rounded-xl flex items-center justify-center transition-all cursor-pointer ${
                     input.trim() && !loading
-                      ? "bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-md shadow-indigo-500/30 scale-100"
-                      : "bg-zinc-800 text-zinc-500 cursor-not-allowed opacity-50"
+                      ? "bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white shadow-md scale-100"
+                      : "bg-gray-900 text-gray-600 cursor-not-allowed opacity-50"
                   }`}
                   aria-label="Send Message"
                 >
@@ -434,7 +434,7 @@ export default function AIAssistant() {
                 </button>
               </form>
               <div className="text-center mt-1.5">
-                <span className="text-[10px] text-zinc-500">
+                <span className="text-[10px] text-gray-500">
                   Ritik AI can make mistakes. Check projects for exact info.
                 </span>
               </div>
