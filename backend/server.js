@@ -40,6 +40,7 @@ app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/settings', require('./routes/settingsRoutes'));
 app.use('/api/upload', require('./routes/uploadRoute'));
 app.use('/api/download-cv', require('./routes/downloadRoute'));
+app.use('/api/ai', require('./routes/aiRoutes'));
 
 // Root Endpoint
 app.get('/', (req, res) => {

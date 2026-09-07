@@ -47,3 +47,60 @@ export async function getSettings() {
     return defaultSettings;
   }
 }
+
+/**
+ * Send chat message to Ritik AI backend (LangChain + Gemini)
+ * Includes graceful local fallback if backend is unreachable.
+ */
+export async function sendChatMessage(message, history = []) {
+  try {
+    const res = await fetch(`${API_URL}/ai/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message, history }),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Server returned ${res.status}`);
+    }
+
+    const data = await res.json();
+    if (data && data.reply) {
+      return {
+        reply: data.reply,
+        action: data.action || null,
+      };
+    }
+    throw new Error('Invalid response structure');
+  } catch (err) {
+    console.warn('[AI Client] Fallback mode activated:', err.message);
+    
+    // Client-side quick intelligent fallback
+    const msg = (message || '').toLowerCase();
+    if (msg.includes('resume') || msg.includes('cv') || msg.includes('download')) {
+      return {
+        reply: "You can download Ritik's official Resume directly using the button below! Feel free to ask if you'd like to know about his projects or skills.",
+        action: { type: 'DOWNLOAD_CV', label: 'Download Resume (CV)', url: `${API_URL}/download-cv` }
+      };
+    }
+    if (msg.includes('project') || msg.includes('shopx') || msg.includes('ems') || msg.includes('cara')) {
+      return {
+        reply: "Ritik has developed key projects including:\n\n1. **ShopX E-commerce**: Full-stack MERN with AI voice navigation\n2. **EMS**: Enterprise Employee Management System\n3. **Cara E-commerce**: High performance shopping storefront\n4. **LinkedIn Clone**: Modern social networking clone\n\nWhich one would you like to explore?",
+        action: { type: 'VIEW_PROJECT', label: 'Explore Projects', project: 'ShopX' }
+      };
+    }
+    if (msg.includes('contact') || msg.includes('whatsapp') || msg.includes('email') || msg.includes('hire')) {
+      return {
+        reply: "You can reach Ritik at:\n- **Email**: ritikvarun64@gmail.com\n- **Phone**: +91 9808433521\n- **Location**: Agra, UP, India\n\nClick below to message him directly on WhatsApp!",
+        action: { type: 'WHATSAPP', label: 'Chat on WhatsApp', url: 'https://wa.me/919808843521' }
+      };
+    }
+    return {
+      reply: "Hi! I am **Ritik AI**, your virtual guide to Ritik Varun's portfolio. You can ask me about his **Projects**, **Tech Stack**, **Education**, or **Download his CV**!",
+      action: null
+    };
+  }
+}
+

@@ -6,6 +6,7 @@ config.autoAddCss = false;
 import Navbar from "@/components/Navbar/Navbar";
 import CustomCursor from "@/components/CustomCursor/CustomCursor";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp/FloatingWhatsApp";
+import AIAssistant from "@/components/AIAssistant/AIAssistant";
 
 export const metadata = {
   metadataBase: new URL("https://www.ritikvarun.me"),
@@ -120,6 +121,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <FloatingWhatsApp />
+        <AIAssistant />
       </body>
     </html>
   );
