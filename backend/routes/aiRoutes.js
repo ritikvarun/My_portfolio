@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { processAIChat } = require('../services/aiService');
+const { processAIChat, generateProjectContent } = require('../services/aiService');
 
 /**
  * @route   POST /api/ai/chat
@@ -33,6 +33,40 @@ router.post('/chat', async (req, res) => {
 });
 
 /**
+ * @route   POST /api/ai/generate-project
+ * @desc    Generate professional project descriptions for Admin Panel
+ * @access  Public / Admin
+ */
+router.post('/generate-project', async (req, res) => {
+  try {
+    const { title, github, category, prompt } = req.body;
+
+    if (!title || typeof title !== 'string' || !title.trim()) {
+      return res.status(400).json({ success: false, message: 'Project title is required to generate content.' });
+    }
+
+    const result = await generateProjectContent({
+      title: title.trim(),
+      github: github || '',
+      category: category || '',
+      prompt: prompt || ''
+    });
+
+    return res.json({
+      success: true,
+      data: result
+    });
+  } catch (error) {
+    console.error('Error in /api/ai/generate-project:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to generate project content',
+      error: error.message
+    });
+  }
+});
+
+/**
  * @route   GET /api/ai/status
  * @desc    Check if AI service is active and if API key is configured
  * @access  Public
@@ -47,3 +81,4 @@ router.get('/status', (req, res) => {
 });
 
 module.exports = router;
+

@@ -404,7 +404,88 @@ INSTRUCTIONS:
   }
 }
 
+/**
+ * AI Project Content Generator for Admin Panel
+ */
+async function generateProjectContent({ title, github = '', category = '', prompt = '' }) {
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+
+  if (!apiKey || apiKey === 'YOUR_GEMINI_API_KEY') {
+    return {
+      description: `A modern ${category || 'web'} application developed by Ritik Varun featuring scalable architecture and responsive user experience.`,
+      detail: `Developed ${title || 'a high-performance application'} with modern frontend and backend technologies. Features include responsive design, optimized state management, clean component hierarchy, and seamless user interaction.`,
+      suggestedCategory: category || 'Frontend'
+    };
+  }
+
+  try {
+    const model = new ChatGoogleGenerativeAI({
+      apiKey: apiKey,
+      model: "gemini-3.6-flash",
+      temperature: 0.7,
+      maxOutputTokens: 800,
+    });
+
+    const systemPrompt = `
+You are an expert technical portfolio writer for Ritik Varun (Full Stack & Frontend Developer).
+Your task is to write high-quality, professional, recruiter-impressive descriptions for a portfolio project.
+
+PROJECT INPUTS:
+- Title: ${title || 'Untitled Project'}
+- Category Hint: ${category || 'Not specified'}
+- GitHub Link: ${github || 'None'}
+- Developer Notes / Prompt: ${prompt || 'None'}
+
+OUTPUT FORMAT:
+Return ONLY a valid JSON object (no markdown code fences, no extra text) with these exact keys:
+{
+  "description": "A crisp, powerful 1-2 sentence summary of the project suitable for cards.",
+  "detail": "A detailed 1-2 paragraph technical explanation explaining architecture, key features, performance optimizations, and technologies used.",
+  "suggestedCategory": "One of: Full Stack, Frontend, Website Template, Creative Website, AI Project, Other"
+}
+`;
+
+    const response = await model.invoke([
+      new SystemMessage(systemPrompt),
+      new HumanMessage(`Generate professional project content for: "${title}"`)
+    ]);
+
+    let raw = response.content.trim();
+    // Remove markdown code fence if model included it
+    raw = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/i, '').trim();
+
+    try {
+      const parsed = JSON.parse(raw);
+      return {
+        description: parsed.description || '',
+        detail: parsed.detail || '',
+        suggestedCategory: parsed.suggestedCategory || category || 'Frontend'
+      };
+    } catch (parseErr) {
+      // Regex extraction fallback for unescaped newlines/quotes
+      const descMatch = raw.match(/"description"\s*:\s*"([\s\S]*?)(?<!\\)"/);
+      const detailMatch = raw.match(/"detail"\s*:\s*"([\s\S]*?)(?<!\\)"/);
+      const catMatch = raw.match(/"suggestedCategory"\s*:\s*"([\s\S]*?)(?<!\\)"/);
+
+      return {
+        description: descMatch ? descMatch[1].replace(/\\"/g, '"').trim() : `A modern ${category || 'web'} application developed with clean code.`,
+        detail: detailMatch ? detailMatch[1].replace(/\\"/g, '"').trim() : `Developed ${title || 'this project'} with modern architecture.`,
+        suggestedCategory: catMatch ? catMatch[1].trim() : (category || 'Frontend')
+      };
+    }
+  } catch (err) {
+    console.error('[AI Project Generator Error]:', err.message);
+    return {
+      description: `A modern ${category || 'web'} application developed with clean code, scalability, and seamless user experience.`,
+      detail: `Developed ${title || 'this project'} featuring modern web technologies, responsive layout, and robust architecture.`,
+      suggestedCategory: category || 'Frontend'
+    };
+  }
+}
+
 module.exports = {
   processAIChat,
-  buildRAGContext
+  buildRAGContext,
+  generateProjectContent
 };
+

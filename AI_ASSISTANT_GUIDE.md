@@ -77,11 +77,30 @@ LangChain AI response me automatically tags detect karta hai aur frontend par be
 | `[ACTION:DOWNLOAD_CV]` | Chat ke andar **"📄 Download Resume (CV)"** button render hota hai. |
 | `[ACTION:WHATSAPP]` | Chat ke andar **"💬 Chat on WhatsApp"** button render hota hai. |
 | `[ACTION:EMAIL]` | Email compose link trigger hota hai. |
+| `[ACTION:OPEN_URL:url:Name]` | Direct browser new tab me live demo open kar deta hai. |
+| `[ACTION:NAVIGATE:path:Name]` | Portfolio ke specific page/section par navigate karta hai. |
+| `[ACTION:DOWNLOAD_CV]` | Chat ke andar **"📄 Download Resume (CV)"** button render aur auto-download hota hai. |
+| `[ACTION:WHATSAPP]` | Chat ke andar **"💬 Chat on WhatsApp"** button render aur auto-open hota hai. |
+| `[ACTION:EMAIL]` | Email compose link trigger hota hai. |
 | `[ACTION:PROJECT:ShopX]` | Projects page link render hota hai. |
 
 ---
 
-## 🔄 Step 4: Naye Projects aur Skills Update Kaise Karein?
+## ✨ Step 4: Admin Panel me AI Auto-Fill Feature
+
+Jab bhi aap Admin Panel (`/admin`) se koi naya project add karte hain:
+1. Bas **Project Title** dalein (e.g. *"Crypto Tracker"* ya *"AI Video Editor"*).
+2. Top par **"✨ Auto-Fill with AI"** button par click karein.
+3. LangChain + Google Gemini automatically:
+   - **Brief Description** (1-2 lines)
+   - **Detailed Technical Breakdown** (Architecture, features, and performance)
+   - **Recommended Category** (Full Stack, Frontend, AI Project, etc.)
+   automatically generate karke form fill kar dega!
+4. Save karne par project MongoDB me store ho jayega aur Ritik AI assistant use turant seekh lega.
+
+---
+
+## 🔄 Step 5: Naye Projects aur Skills Update Kaise Karein?
 
 Aapko AI ke liye manually code change karne ki zaroorat nahi hai:
 
@@ -92,7 +111,7 @@ Aapko AI ke liye manually code change karne ki zaroorat nahi hai:
 
 ---
 
-## 💻 Step 5: Local Run Kaise Karein?
+## 💻 Step 6: Local Run Kaise Karein?
 
 ### 1. Backend Start Karein:
 ```bash
@@ -108,19 +127,26 @@ npm run dev
 ```
 *(Next.js http://localhost:3000 par run hoga)*
 
+### 3. Admin Panel Start Karein:
+```bash
+cd admin
+npm run dev
+```
+*(Vite http://localhost:5173 par run hoga)*
+
 ---
 
-## 🚀 Step 6: Production Deployment (Render / Vercel)
+## 🚀 Step 7: Production Deployment (Render / Vercel)
 
 1. **Backend (Render / Railway / VPS)**:
    - Environment Variables me `GEMINI_API_KEY` zaroor add karein.
    - `PORT=5000` (ya platform default).
-2. **Frontend (Vercel)**:
+2. **Frontend & Admin (Vercel)**:
    - Environment Variable `NEXT_PUBLIC_API_URL` ko apne live backend URL par point karein (e.g., `https://your-backend.onrender.com/api`).
 
 ---
 
-## 🎯 Future Enhancements (Jo aap baad me add kar sakte hain)
+## 🎯 Future Enhancements
 
 1. **Job Description (JD) Matcher**: Recruiter se JD paste karwa ke % match score calculate karwana.
 2. **Voice AI Input**: ShopX project ki tarah mic button se bol kar AI assistant se baat karna.

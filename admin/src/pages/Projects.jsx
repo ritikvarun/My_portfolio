@@ -39,6 +39,38 @@ function Projects() {
 
     const [isEditing, setIsEditing] = useState(false)
     const [editId, setEditId] = useState(null)
+    const [generatingAI, setGeneratingAI] = useState(false)
+
+    const handleAIGenerate = async () => {
+        if (!name.trim()) {
+            toast.warning("Please enter a Project Title first (e.g. 'Crypto Tracker' or 'AI SaaS')");
+            return;
+        }
+        setGeneratingAI(true);
+        try {
+            const token = localStorage.getItem('adminToken');
+            const headers = token ? { Authorization: `Bearer ${token}` } : {};
+            const res = await axios.post(`${serverUrl}/api/ai/generate-project`, {
+                title: name.trim(),
+                github: github.trim(),
+                category: category,
+                prompt: description.trim()
+            }, { headers, withCredentials: true });
+
+            if (res.data.success && res.data.data) {
+                const { description: genDesc, detail: genDetail, suggestedCategory } = res.data.data;
+                if (genDesc) setDescription(genDesc);
+                if (genDetail) setDetail(genDetail);
+                if (suggestedCategory) setCategory(suggestedCategory);
+                toast.success("✨ Project details generated with AI!");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("AI Generation failed. Check backend connection.");
+        } finally {
+            setGeneratingAI(false);
+        }
+    };
 
     const fetchProjects = async () => {
         setLoading(true)
@@ -189,9 +221,27 @@ function Projects() {
                 <div className='grid grid-cols-1 lg:grid-cols-12 gap-[28px]'>
                     {/* Add / Edit Form */}
                     <div className='lg:col-span-5 bg-white rounded-2xl border border-gray-200 shadow-sm p-[24px] h-fit'>
-                        <h2 className='text-[18px] font-bold text-gray-900 mb-[20px]'>
-                            {isEditing ? "Edit Project" : "Add New Project"}
-                        </h2>
+                        <div className='flex items-center justify-between mb-[20px] gap-2'>
+                            <h2 className='text-[18px] font-bold text-gray-900'>
+                                {isEditing ? "Edit Project" : "Add New Project"}
+                            </h2>
+                            <button
+                                type='button'
+                                onClick={handleAIGenerate}
+                                disabled={generatingAI}
+                                className='flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white text-xs font-semibold shadow-md shadow-indigo-500/20 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 cursor-pointer'
+                                title="Auto-fill description and technical details with AI"
+                            >
+                                {generatingAI ? (
+                                    <span className="flex items-center gap-1.5">
+                                        <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        Generating...
+                                    </span>
+                                ) : (
+                                    <span>✨ Auto-Fill with AI</span>
+                                )}
+                            </button>
+                        </div>
                         
                         <form onSubmit={handleSubmit} className='flex flex-col gap-[18px]'>
                             <div>
