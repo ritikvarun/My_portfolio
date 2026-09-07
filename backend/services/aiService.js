@@ -32,12 +32,36 @@ const fallbackKnowledge = {
       tech: "React.js, Node.js, Express, MongoDB, Voice AI API"
     },
     {
-      name: "Employee Management System (EMS)",
+      name: "Muscle Craft Fitness Gym",
       category: "Full Stack",
-      description: "Enterprise EMS for employee tracking, admin assignment dashboards, attendance, and task status.",
-      demo: "https://ems-bay-one.vercel.app",
+      description: "Modern full-stack gym platform with GSAP animations, custom admin dashboard for trainers/gallery, enquiry system with Nodemailer, and MongoDB Atlas.",
+      demo: "https://www.musclecraftfitnessgym.in/",
+      github: "https://github.com/ritikvarun",
+      tech: "React.js, GSAP, Node.js, Express.js, MongoDB Atlas, Nodemailer, Cloudinary"
+    },
+    {
+      name: "EMS (Employee Management System)",
+      category: "Full Stack",
+      description: "Enterprise management system where admins assign tasks to employees with real-time status tracking and clean responsive UI.",
+      demo: "https://ems21.netlify.app/",
       github: "https://github.com/ritikvarun/ems",
-      tech: "React.js, Node.js, Express, MongoDB, JWT"
+      tech: "React.js, Tailwind CSS, LocalStorage / Node.js, Express"
+    },
+    {
+      name: "ZORA Watch Store",
+      category: "Frontend",
+      description: "Luxury stainless steel chronograph watch storefront with responsive modern UI, search filtering, and Add to Cart system.",
+      demo: "https://zora-watch.netlify.app/",
+      github: "https://github.com/ritikvarun",
+      tech: "React.js, Tailwind CSS, Responsive Web Design"
+    },
+    {
+      name: "IMDb CinemaHub",
+      category: "Frontend",
+      description: "Modern movie discovery & streaming preview web application built with React SPA architecture and powered by TMDB API.",
+      demo: "https://imdbmovie21.netlify.app/",
+      github: "https://github.com/ritikvarun",
+      tech: "React.js, TMDB API, Tailwind CSS, Modern UI"
     },
     {
       name: "Cara E-commerce",
@@ -49,7 +73,7 @@ const fallbackKnowledge = {
     },
     {
       name: "LinkedIn Clone",
-      category: "Frontend",
+      category: "Full Stack",
       description: "Professional networking platform clone with modern feed, messaging, and profile sections.",
       demo: "https://linkend-in-clone.vercel.app/",
       github: "https://github.com/ritikvarun/linkendIn-clone",
@@ -58,60 +82,61 @@ const fallbackKnowledge = {
   ]
 };
 
+const connectDB = require('../config/db');
+
 /**
- * Builds real-time context string by querying MongoDB or falling back to static data
+ * Builds real-time context string by querying MongoDB directly
  */
 async function buildRAGContext() {
   let settingsData = fallbackKnowledge;
   let projectsData = fallbackKnowledge.projects;
 
-  const isDbConnected = mongoose.connection && mongoose.connection.readyState === 1;
-
-  if (isDbConnected) {
-    try {
-      const dbSettings = await Settings.findOne().maxTimeMS(2000);
-      if (dbSettings) {
-        settingsData = {
-          name: dbSettings.developerName || fallbackKnowledge.name,
-          title: dbSettings.developerTitle || fallbackKnowledge.title,
-          bio: dbSettings.bio || dbSettings.aboutBio,
-          email: dbSettings.contactEmail || fallbackKnowledge.email,
-          phone: dbSettings.contactPhone || fallbackKnowledge.phone,
-          location: dbSettings.contactAddress || fallbackKnowledge.location,
-          github: dbSettings.githubUrl || fallbackKnowledge.github,
-          linkedin: dbSettings.linkedinUrl || fallbackKnowledge.linkedin,
-          whatsappUrl: dbSettings.whatsappUrl || fallbackKnowledge.whatsappUrl,
-          college: fallbackKnowledge.college,
-          degree: fallbackKnowledge.degree,
-          skills: fallbackKnowledge.skills
-        };
-      }
-    } catch (err) {
-      console.warn('[AI Service] Could not fetch settings from DB, using fallback:', err.message);
+  try {
+    // Ensure active MongoDB connection
+    if (!mongoose.connection || mongoose.connection.readyState !== 1) {
+      await connectDB();
     }
 
-    try {
-      const dbProjects = await Project.find().maxTimeMS(2000);
-      if (dbProjects && dbProjects.length > 0) {
-        projectsData = dbProjects.map(p => ({
-          name: p.name,
-          category: p.category,
-          description: p.description || p.Detail,
-          demo: p.demo || '',
-          github: p.github || ''
-        }));
-      }
-    } catch (err) {
-      console.warn('[AI Service] Could not fetch projects from DB, using fallback:', err.message);
+    // 1. Fetch live settings from MongoDB
+    const dbSettings = await Settings.findOne();
+    if (dbSettings) {
+      settingsData = {
+        name: dbSettings.developerName || fallbackKnowledge.name,
+        title: dbSettings.developerTitle || fallbackKnowledge.title,
+        bio: dbSettings.bio || dbSettings.aboutBio,
+        email: dbSettings.contactEmail || fallbackKnowledge.email,
+        phone: dbSettings.contactPhone || fallbackKnowledge.phone,
+        location: dbSettings.contactAddress || fallbackKnowledge.location,
+        github: dbSettings.githubUrl || fallbackKnowledge.github,
+        linkedin: dbSettings.linkedinUrl || fallbackKnowledge.linkedin,
+        whatsappUrl: dbSettings.whatsappUrl || fallbackKnowledge.whatsappUrl,
+        college: fallbackKnowledge.college,
+        degree: fallbackKnowledge.degree,
+        skills: fallbackKnowledge.skills
+      };
     }
+
+    // 2. Fetch live projects directly from MongoDB (sorted by newest first)
+    const dbProjects = await Project.find().sort({ createdAt: -1 });
+    if (dbProjects && dbProjects.length > 0) {
+      projectsData = dbProjects.map(p => ({
+        name: p.name,
+        category: p.category || 'Web Development',
+        description: p.description || p.Detail || '',
+        demo: p.demo || '',
+        github: p.github || ''
+      }));
+    }
+  } catch (err) {
+    console.warn('[AI Service] MongoDB query error, using fallback:', err.message);
   }
 
-  const projectsSummary = projectsData.map(p => 
-    `- **${p.name}** (${p.category}): ${p.description} | Demo: ${p.demo || 'N/A'} | GitHub: ${p.github || 'N/A'}`
+  const projectsSummary = projectsData.map((p, index) => 
+    `${index + 1}. **${p.name}** [Category: ${p.category}] - ${p.description} (Demo: ${p.demo || 'N/A'}, GitHub: ${p.github || 'N/A'})`
   ).join('\n');
 
   return `
-=== ABOUT RITIK VARUN ===
+=== ABOUT RITIK VARUN (LIVE DATABASE) ===
 Name: ${settingsData.name}
 Role: ${settingsData.title}
 Education: ${settingsData.degree} from ${settingsData.college}
@@ -128,7 +153,7 @@ LinkedIn: ${settingsData.linkedin}
 === TECHNICAL SKILLS ===
 ${fallbackKnowledge.skills.join('\n')}
 
-=== FEATURED PROJECTS ===
+=== ALL LIVE PROJECTS IN DATABASE (TOTAL: ${projectsData.length}) ===
 ${projectsSummary}
 `;
 }
@@ -181,10 +206,10 @@ function handleFallbackResponse(message) {
     };
   }
 
-  if (lower.includes('project') || lower.includes('shopx') || lower.includes('ems') || lower.includes('cara') || lower.includes('work')) {
+  if (lower.includes('project') || lower.includes('work') || lower.includes('portfolio') || lower.includes('build')) {
     return {
-      reply: "Ritik has built several impressive projects including:\n\n1. **ShopX E-commerce** (Full Stack with AI voice navigation)\n2. **Employee Management System** (React + Node.js + MongoDB)\n3. **Cara E-commerce** (Modern responsive store)\n4. **LinkedIn Clone** (Interactive social platform)\n\nWhich project would you like to explore in detail?",
-      action: { type: 'VIEW_PROJECT', label: 'Explore Projects', project: 'ShopX' }
+      reply: "Ritik has built **7 featured projects** across Full-Stack and Frontend:\n\n1. 🛍️ **ShopX E-commerce** (Full Stack) - E-commerce with AI voice navigation\n2. 🏋️‍♂️ **Muscle Craft Fitness Gym** (Full Stack) - Live gym website with GSAP, admin portal & enquiry system\n3. 👥 **EMS (Employee Management System)** (Full Stack) - Task assignment & employee dashboard\n4. ⌚ **ZORA Watch Store** (Frontend) - Luxury chronograph watch e-commerce\n5. 🎬 **IMDb CinemaHub** (Frontend) - Movie discovery preview app powered by TMDB API\n6. 👗 **Cara E-commerce** (Frontend) - Modern responsive storefront with Swiper.js\n7. 💼 **LinkedIn Clone** (Full Stack) - Social networking platform clone\n\nWhich project would you like to explore in detail?",
+      action: { type: 'VIEW_PROJECT', label: 'Explore All Projects', project: 'ShopX' }
     };
   }
 
@@ -234,25 +259,28 @@ async function processAIChat(userMessage, chatHistory = []) {
       apiKey: apiKey,
       model: "gemini-3.6-flash",
       temperature: 0.7,
-      maxOutputTokens: 600,
+      maxOutputTokens: 1500,
     });
 
     const systemPromptText = `
 You are "Ritik AI", the official intelligent AI assistant for Ritik Varun's personal developer portfolio.
 Your goal is to represent Ritik Varun professionally, enthusiastically, and accurately to recruiters, clients, and visitors.
 
-KNOWLEDGE BASE:
+KNOWLEDGE BASE (FETCHED LIVE FROM MONGODB):
 ${ragContext}
 
 INSTRUCTIONS:
 1. Answer questions strictly based on the Knowledge Base. If asked about something outside Ritik's background/tech/hiring, politely redirect back to Ritik's work.
-2. Keep answers concise, engaging, and well-formatted with markdown bullets where helpful.
-3. Be friendly and confident. You can respond in English (default) or Hinglish/Hindi if the user queries in Hindi.
-4. ACTION TRIGGERS (Append these special tags when applicable so the frontend can render rich interactive buttons):
+2. When asked about projects (e.g., "what projects have you made?", "show all projects", "list all projects", "top projects"):
+   - ALWAYS list ALL projects available in the KNOWLEDGE BASE above.
+   - For each project, show its name, category (Full Stack / Frontend), and a clear 1-line description.
+3. Keep answers engaging, crisp, and well-formatted with markdown numbered lists/bullets.
+4. Be friendly and confident. You can respond in English (default) or Hinglish/Hindi if the user queries in Hindi.
+5. ACTION TRIGGERS (Append these special tags when applicable so the frontend can render rich interactive buttons):
    - If user asks for resume, CV, or hiring documents -> Append "[ACTION:DOWNLOAD_CV]" at the end.
    - If user wants to contact, message, or hire Ritik on WhatsApp -> Append "[ACTION:WHATSAPP]" at the end.
    - If user wants to email Ritik -> Append "[ACTION:EMAIL]" at the end.
-   - If user specifically asks about a project (e.g. ShopX, EMS, Cara) -> Append "[ACTION:PROJECT:ProjectName]" at the end.
+   - If user specifically asks about a project (e.g. ShopX, EMS, Cara, Muscle Craft, ZORA, IMDB) -> Append "[ACTION:PROJECT:ProjectName]" at the end.
 `;
 
     const messages = [
