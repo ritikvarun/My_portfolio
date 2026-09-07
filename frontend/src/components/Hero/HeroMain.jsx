@@ -52,7 +52,7 @@ const HeroMain = () => {
   }, []);
 
   const handleDownloadCV = () => {
-    window.open("/RItik.pdf", "_blank");
+    window.open("/Ritik.pdf", "_blank");
   };
 
   return (

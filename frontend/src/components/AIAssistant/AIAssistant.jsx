@@ -328,7 +328,7 @@ export default function AIAssistant() {
                             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white text-xs font-semibold shadow-md transition-all hover:scale-[1.02] cursor-pointer"
                           >
                             <FileText className="w-3.5 h-3.5 text-gray-300" />
-                            {msg.action.label || "Download Resume (CV)"}
+                            {msg.action.label || "Download My Resume"}
                           </a>
                         )}
 
