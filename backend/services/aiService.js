@@ -5,79 +5,107 @@ const { HumanMessage, SystemMessage, AIMessage } = require('@langchain/core/mess
 const Project = require('../models/Project');
 const Settings = require('../models/Settings');
 
-// Default fallback knowledge base in case database is empty or offline
+// Complete Knowledge base synced with latest Official Resume
 const fallbackKnowledge = {
-  name: "Ritik Varun",
-  title: "Full Stack Web Developer & Frontend Specialist",
-  college: "Uttam Institute of Technology and Management (Dr. Bhim Rao Ambedkar University, Agra)",
-  degree: "BCA (Bachelor of Computer Applications)",
-  location: "Agra, Uttar Pradesh, India",
-  email: "ritikvarun64@gmail.com",
+  name: "Ritik",
+  fullName: "Ritik Varun",
+  title: "Full Stack MERN Developer",
+  summary: "BCA graduate with hands-on experience in building responsive and full-stack web applications using React.js, Node.js, Express.js, and MongoDB. Experienced in developing production-ready client projects, REST APIs, and modern user interfaces. Passionate about creating scalable web applications and continuously learning new technologies.",
   phone: "9808433521",
+  email: "ritikvarun64@gmail.com",
+  portfolioUrl: "https://www.ritikvarun.me",
+  location: "Agra / Mathura, Uttar Pradesh, India",
   whatsappUrl: "https://wa.me/919808843521",
   github: "https://github.com/Ritikvarun",
   linkedin: "https://www.linkedin.com/in/ritik-varun-0b6795274/",
+  education: [
+    {
+      degree: "Master of Computer Applications (MCA) – Online",
+      institution: "GLA University, Mathura",
+      duration: "2026 – Present",
+      location: "Mathura"
+    },
+    {
+      degree: "Bachelor of Computer Applications (BCA)",
+      institution: "Uttam Institute of Technology and Management",
+      duration: "2023 - 2026",
+      location: "Runkata Agra"
+    }
+  ],
+  experience: [
+    {
+      role: "Frontend Developer Intern",
+      company: "Welvic India",
+      duration: "03/2024 - 10/2024",
+      highlights: [
+        "Developed the complete frontend of an e-commerce website using HTML5, CSS3, and JavaScript.",
+        "Built responsive user interfaces for home page, product listing, product details, shopping cart, checkout, and other core e-commerce pages.",
+        "Created reusable UI components and optimized website for seamless experience across desktop and mobile devices.",
+        "Collaborated with the development team to integrate frontend pages with backend APIs and client requirements."
+      ]
+    }
+  ],
   skills: [
-    "Frontend: React.js, Next.js 16, TypeScript, JavaScript (ES6+), Tailwind CSS v4, Framer Motion, GSAP, Swiper.js, HTML5/CSS3",
-    "Backend: Node.js, Express.js, RESTful APIs, MongoDB, Mongoose, JWT Authentication, Cloudinary, Razorpay Integration, Resend",
-    "Tools & DevOps: Git, GitHub, Postman, Vercel, Render, Technical SEO"
+    "Frontend: HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Tailwind CSS, GSAP, Responsive UI",
+    "Backend: Node.js, Express.js, MongoDB, Mongoose, REST APIs, JWT Authentication, Cloudinary, Resend, Razorpay",
+    "Tools & Platforms: Git, GitHub, Postman, Vercel, Render"
   ],
   projects: [
     {
-      name: "ShopX E-commerce",
+      name: "Muscle Craft Fitness Gym (Freelance Client)",
       category: "Full Stack",
-      description: "Full-stack e-commerce platform with product catalogue, cart, order management, and AI-based voice navigation.",
-      demo: "https://shopx-6u3e.onrender.com/",
-      github: "https://github.com/ritikvarun/ShopX",
-      tech: "React.js, Node.js, Express, MongoDB, Voice AI API"
-    },
-    {
-      name: "Muscle Craft Fitness Gym",
-      category: "Full Stack",
-      description: "Modern full-stack gym platform with GSAP animations, custom admin dashboard for trainers/gallery, enquiry system with Nodemailer, and MongoDB Atlas.",
+      description: "Developed a production-ready gym management website for a freelance client using React.js, Node.js, Express.js, and MongoDB Atlas. Built a custom admin dashboard, REST APIs, Cloudinary integration, Resend email notifications, and deployed using Vercel and Render.",
       demo: "https://www.musclecraftfitnessgym.in/",
       github: "https://github.com/ritikvarun",
-      tech: "React.js, GSAP, Node.js, Express.js, MongoDB Atlas, Nodemailer, Cloudinary"
+      tech: "React.js, Node.js, Express.js, MongoDB Atlas, GSAP, Resend, Cloudinary"
     },
     {
-      name: "EMS (Employee Management System)",
+      name: "ShopX E-commerce",
       category: "Full Stack",
-      description: "Enterprise management system where admins assign tasks to employees with real-time status tracking and clean responsive UI.",
-      demo: "https://ems21.netlify.app/",
-      github: "https://github.com/ritikvarun/ems",
-      tech: "React.js, Tailwind CSS, LocalStorage / Node.js, Express"
-    },
-    {
-      name: "ZORA Watch Store",
-      category: "Frontend",
-      description: "Luxury stainless steel chronograph watch storefront with responsive modern UI, search filtering, and Add to Cart system.",
-      demo: "https://zora-watch.netlify.app/",
-      github: "https://github.com/ritikvarun",
-      tech: "React.js, Tailwind CSS, Responsive Web Design"
-    },
-    {
-      name: "IMDb CinemaHub",
-      category: "Frontend",
-      description: "Modern movie discovery & streaming preview web application built with React SPA architecture and powered by TMDB API.",
-      demo: "https://imdbmovie21.netlify.app/",
-      github: "https://github.com/ritikvarun",
-      tech: "React.js, TMDB API, Tailwind CSS, Modern UI"
-    },
-    {
-      name: "Cara E-commerce",
-      category: "Frontend",
-      description: "Modern, responsive e-commerce storefront with smooth slider animations and mobile-first experience.",
-      demo: "https://cara-e-commerce12.netlify.app/",
-      github: "https://github.com/ritikvarun/Cara_E-commerce",
-      tech: "HTML5, CSS3, JavaScript, Swiper.js"
+      description: "Developed a full-stack e-commerce application with product listing, cart functionality, user interaction, and AI-based voice navigation.",
+      demo: "https://shopx-6u3e.onrender.com/",
+      github: "https://github.com/ritikvarun/ShopX",
+      tech: "React.js, Node.js, Express.js, MongoDB, Voice AI API"
     },
     {
       name: "LinkedIn Clone",
       category: "Full Stack",
-      description: "Professional networking platform clone with modern feed, messaging, and profile sections.",
+      description: "Built a LinkedIn-inspired web application with React.js, Node.js, Express.js, and MongoDB featuring authentication, user profiles, post sharing, image uploads, and REST API integration.",
       demo: "https://linkend-in-clone.vercel.app/",
       github: "https://github.com/ritikvarun/linkendIn-clone",
-      tech: "React.js, CSS3, Responsive Web Design"
+      tech: "React.js, Node.js, Express.js, MongoDB, JWT"
+    },
+    {
+      name: "EMS (Employee Management System)",
+      category: "Frontend",
+      description: "Enterprise management system for assigning tasks to employees with real-time tracking.",
+      demo: "https://ems21.netlify.app/",
+      github: "https://github.com/ritikvarun/ems",
+      tech: "React.js, Tailwind CSS, LocalStorage"
+    },
+    {
+      name: "ZORA Watch Store",
+      category: "Frontend",
+      description: "Luxury chronograph watch showcase storefront with responsive modern UI and Add to Cart system.",
+      demo: "https://zora-watch.netlify.app/",
+      github: "https://github.com/ritikvarun",
+      tech: "React.js, Tailwind CSS"
+    },
+    {
+      name: "IMDb CinemaHub",
+      category: "Frontend",
+      description: "Modern movie discovery platform powered by TMDB API with preview streaming UI.",
+      demo: "https://imdbmovie21.netlify.app/",
+      github: "https://github.com/ritikvarun",
+      tech: "React.js, TMDB API, Tailwind CSS"
+    },
+    {
+      name: "Cara E-commerce",
+      category: "Frontend",
+      description: "Clean, responsive storefront built using HTML, CSS, JavaScript, and Swiper.js.",
+      demo: "https://cara-e-commerce12.netlify.app/",
+      github: "https://github.com/ritikvarun/Cara_E-commerce",
+      tech: "HTML5, CSS3, JavaScript, Swiper.js"
     }
   ]
 };
@@ -103,16 +131,13 @@ async function buildRAGContext() {
       settingsData = {
         name: dbSettings.developerName || fallbackKnowledge.name,
         title: dbSettings.developerTitle || fallbackKnowledge.title,
-        bio: dbSettings.bio || dbSettings.aboutBio,
+        bio: dbSettings.bio || dbSettings.aboutBio || fallbackKnowledge.summary,
         email: dbSettings.contactEmail || fallbackKnowledge.email,
         phone: dbSettings.contactPhone || fallbackKnowledge.phone,
         location: dbSettings.contactAddress || fallbackKnowledge.location,
         github: dbSettings.githubUrl || fallbackKnowledge.github,
         linkedin: dbSettings.linkedinUrl || fallbackKnowledge.linkedin,
-        whatsappUrl: dbSettings.whatsappUrl || fallbackKnowledge.whatsappUrl,
-        college: fallbackKnowledge.college,
-        degree: fallbackKnowledge.degree,
-        skills: fallbackKnowledge.skills
+        whatsappUrl: dbSettings.whatsappUrl || fallbackKnowledge.whatsappUrl
       };
     }
 
@@ -135,20 +160,34 @@ async function buildRAGContext() {
     `${index + 1}. **${p.name}** [Category: ${p.category}] - ${p.description} (Demo: ${p.demo || 'N/A'}, GitHub: ${p.github || 'N/A'})`
   ).join('\n');
 
+  const educationSummary = fallbackKnowledge.education.map(e => 
+    `- **${e.degree}** from ${e.institution} (${e.duration}, ${e.location})`
+  ).join('\n');
+
+  const experienceSummary = fallbackKnowledge.experience.map(exp => 
+    `- **${exp.role}** at **${exp.company}** (${exp.duration}):\n  ${exp.highlights.map(h => `* ${h}`).join('\n  ')}`
+  ).join('\n');
+
   return `
-=== ABOUT RITIK VARUN (LIVE DATABASE) ===
+=== ABOUT RITIK VARUN (OFFICIAL RESUME & LIVE DATABASE) ===
 Name: ${settingsData.name}
 Role: ${settingsData.title}
-Education: ${settingsData.degree} from ${settingsData.college}
+Summary: ${settingsData.bio || fallbackKnowledge.summary}
 Location: ${settingsData.location}
-Bio: ${settingsData.bio || "Passionate Full Stack Developer with expertise in MERN stack & modern web tech."}
 
 === CONTACT INFO ===
-Email: ${settingsData.email}
 Phone: ${settingsData.phone}
+Email: ${settingsData.email}
+Portfolio Website: ${fallbackKnowledge.portfolioUrl}
 WhatsApp: ${settingsData.whatsappUrl}
 GitHub: ${settingsData.github}
 LinkedIn: ${settingsData.linkedin}
+
+=== WORK EXPERIENCE ===
+${experienceSummary}
+
+=== EDUCATION ===
+${educationSummary}
 
 === TECHNICAL SKILLS ===
 ${fallbackKnowledge.skills.join('\n')}
