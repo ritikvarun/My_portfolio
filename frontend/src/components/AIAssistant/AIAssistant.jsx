@@ -87,6 +87,31 @@ export default function AIAssistant() {
       };
 
       setMessages((prev) => [...prev, aiMessage]);
+
+      // Auto-execute autonomous actions (Open URL, Navigate, Download CV)
+      if (res.action && res.action.autoOpen) {
+        if (res.action.type === "OPEN_URL" && res.action.url) {
+          setTimeout(() => {
+            window.open(res.action.url, "_blank", "noopener,noreferrer");
+          }, 450);
+        } else if (res.action.type === "NAVIGATE" && res.action.path) {
+          setTimeout(() => {
+            window.location.href = res.action.path;
+          }, 450);
+        } else if (res.action.type === "DOWNLOAD_CV") {
+          setTimeout(() => {
+            window.open(res.action.url || "http://localhost:5000/api/download-cv", "_blank");
+          }, 450);
+        } else if (res.action.type === "WHATSAPP") {
+          setTimeout(() => {
+            window.open(res.action.url || "https://wa.me/919808843521", "_blank");
+          }, 450);
+        } else if (res.action.type === "EMAIL") {
+          setTimeout(() => {
+            window.location.href = res.action.url || "mailto:ritikvarun64@gmail.com";
+          }, 450);
+        }
+      }
     } catch (err) {
       console.error("Chat error:", err);
       setMessages((prev) => [
@@ -273,6 +298,28 @@ export default function AIAssistant() {
                     {/* Action Cards / Action Buttons attached to AI reply */}
                     {msg.sender === "ai" && msg.action && (
                       <div className="mt-2 flex flex-wrap gap-2">
+                        {msg.action.type === "OPEN_URL" && (
+                          <a
+                            href={msg.action.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            {msg.action.label || "Open Link"} 🚀
+                          </a>
+                        )}
+
+                        {msg.action.type === "NAVIGATE" && (
+                          <a
+                            href={msg.action.path}
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            {msg.action.label || "Navigate Page"}
+                          </a>
+                        )}
+
                         {msg.action.type === "DOWNLOAD_CV" && (
                           <a
                             href={msg.action.url || "http://localhost:5000/api/download-cv"}

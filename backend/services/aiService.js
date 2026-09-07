@@ -159,34 +159,64 @@ ${projectsSummary}
 }
 
 /**
- * Parses action tags from AI response like [ACTION:DOWNLOAD_CV]
+ * Parses action tags from AI response like [ACTION:OPEN_URL:url:label] or [ACTION:DOWNLOAD_CV]
  */
 function extractActionFromReply(rawReply) {
   let reply = rawReply;
   let action = null;
 
+  // 1. Explicit OPEN_URL tag [ACTION:OPEN_URL:url:label]
+  const openUrlMatch = reply.match(/\[ACTION:OPEN_URL:(.+?)\]/i);
+  if (openUrlMatch) {
+    const content = openUrlMatch[1].trim();
+    const lastColonIdx = content.lastIndexOf(':');
+    let targetUrl = content;
+    let label = 'Live Link';
+    if (lastColonIdx > 6) {
+      targetUrl = content.substring(0, lastColonIdx).trim();
+      label = content.substring(lastColonIdx + 1).trim();
+    }
+    action = { type: 'OPEN_URL', label: `Open ${label}`, url: targetUrl, autoOpen: true };
+    reply = reply.replace(/\[ACTION:OPEN_URL:.*?\]/gi, '').trim();
+  }
+
+  // 2. Explicit NAVIGATE tag [ACTION:NAVIGATE:path:label]
+  const navMatch = reply.match(/\[ACTION:NAVIGATE:(.+?)\]/i);
+  if (navMatch) {
+    const content = navMatch[1].trim();
+    const parts = content.split(':');
+    const targetPath = parts[0].trim();
+    const label = parts[1] ? parts[1].trim() : 'Page';
+    action = { type: 'NAVIGATE', label: `Go to ${label}`, path: targetPath, autoOpen: true };
+    reply = reply.replace(/\[ACTION:NAVIGATE:.*?\]/gi, '').trim();
+  }
+
+  // 3. DOWNLOAD_CV tag
   const cvMatch = reply.match(/\[ACTION:DOWNLOAD_CV\]/i);
   if (cvMatch) {
-    action = { type: 'DOWNLOAD_CV', label: 'Download Resume (CV)', url: '/api/download-cv' };
+    action = { type: 'DOWNLOAD_CV', label: 'Download Resume (CV)', url: '/api/download-cv', autoOpen: true };
     reply = reply.replace(/\[ACTION:DOWNLOAD_CV\]/gi, '').trim();
   }
 
+  // 4. WHATSAPP tag
   const whatsappMatch = reply.match(/\[ACTION:WHATSAPP\]/i);
   if (whatsappMatch) {
-    action = { type: 'WHATSAPP', label: 'Chat on WhatsApp', url: 'https://wa.me/919808843521' };
+    action = { type: 'WHATSAPP', label: 'Chat on WhatsApp', url: 'https://wa.me/919808843521', autoOpen: true };
     reply = reply.replace(/\[ACTION:WHATSAPP\]/gi, '').trim();
   }
 
+  // 5. EMAIL tag
   const emailMatch = reply.match(/\[ACTION:EMAIL\]/i);
   if (emailMatch) {
-    action = { type: 'EMAIL', label: 'Send Email', url: 'mailto:ritikvarun64@gmail.com' };
+    action = { type: 'EMAIL', label: 'Send Email', url: 'mailto:ritikvarun64@gmail.com', autoOpen: true };
     reply = reply.replace(/\[ACTION:EMAIL\]/gi, '').trim();
   }
 
+  // 6. Generic PROJECT tag
   const projectMatch = reply.match(/\[ACTION:PROJECT:(.*?)\]/i);
   if (projectMatch) {
     const projectName = projectMatch[1].trim();
-    action = { type: 'VIEW_PROJECT', label: `View ${projectName}`, project: projectName };
+    action = { type: 'VIEW_PROJECT', label: `View ${projectName}`, project: projectName, autoOpen: false };
     reply = reply.replace(/\[ACTION:PROJECT:.*?\]/gi, '').trim();
   }
 
@@ -199,31 +229,80 @@ function extractActionFromReply(rawReply) {
 function handleFallbackResponse(message) {
   const lower = (message || '').toLowerCase();
   
+  if (lower.includes('zora')) {
+    return {
+      reply: "Opening **ZORA Watch Store** for you! It is a luxury stainless steel chronograph watch storefront built with React and Tailwind CSS.",
+      action: { type: 'OPEN_URL', label: 'Open ZORA', url: 'https://zora-watch.netlify.app/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('muscle') || lower.includes('gym')) {
+    return {
+      reply: "Opening **Muscle Craft Fitness Gym** for you! It is a full-stack gym platform with GSAP animations, admin portal and enquiry system.",
+      action: { type: 'OPEN_URL', label: 'Open Muscle Craft', url: 'https://www.musclecraftfitnessgym.in/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('shopx')) {
+    return {
+      reply: "Opening **ShopX E-commerce** for you! It features product management and AI-based voice navigation.",
+      action: { type: 'OPEN_URL', label: 'Open ShopX', url: 'https://shopx-6u3e.onrender.com/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('imdb') || lower.includes('movie')) {
+    return {
+      reply: "Opening **IMDb CinemaHub** for you! It is powered by TMDB API with modern movie discovery.",
+      action: { type: 'OPEN_URL', label: 'Open IMDb CinemaHub', url: 'https://imdbmovie21.netlify.app/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('ems')) {
+    return {
+      reply: "Opening **EMS (Employee Management System)** for you! It lets admins manage tasks and employee attendance.",
+      action: { type: 'OPEN_URL', label: 'Open EMS', url: 'https://ems21.netlify.app/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('cara')) {
+    return {
+      reply: "Opening **Cara E-commerce** for you! It features a modern storefront built with HTML, CSS, JavaScript, and Swiper.js.",
+      action: { type: 'OPEN_URL', label: 'Open Cara E-commerce', url: 'https://cara-e-commerce12.netlify.app/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('linkedin')) {
+    return {
+      reply: "Opening **LinkedIn Clone** for you! It is a professional networking platform with messaging and profile feeds.",
+      action: { type: 'OPEN_URL', label: 'Open LinkedIn Clone', url: 'https://linkend-in-clone.vercel.app/', autoOpen: true }
+    };
+  }
+
+  if (lower.includes('github')) {
+    return {
+      reply: "Opening Ritik's **GitHub Profile** for you!",
+      action: { type: 'OPEN_URL', label: 'Open GitHub', url: 'https://github.com/Ritikvarun', autoOpen: true }
+    };
+  }
+
   if (lower.includes('resume') || lower.includes('cv') || lower.includes('download')) {
     return {
-      reply: "You can download Ritik's official Resume directly using the button below! Feel free to ask if you'd like to know about his projects or skills.",
-      action: { type: 'DOWNLOAD_CV', label: 'Download Resume (CV)', url: '/api/download-cv' }
+      reply: "Downloading Ritik's official Resume for you!",
+      action: { type: 'DOWNLOAD_CV', label: 'Download Resume (CV)', url: '/api/download-cv', autoOpen: true }
     };
   }
 
   if (lower.includes('project') || lower.includes('work') || lower.includes('portfolio') || lower.includes('build')) {
     return {
-      reply: "Ritik has built **7 featured projects** across Full-Stack and Frontend:\n\n1. 🛍️ **ShopX E-commerce** (Full Stack) - E-commerce with AI voice navigation\n2. 🏋️‍♂️ **Muscle Craft Fitness Gym** (Full Stack) - Live gym website with GSAP, admin portal & enquiry system\n3. 👥 **EMS (Employee Management System)** (Full Stack) - Task assignment & employee dashboard\n4. ⌚ **ZORA Watch Store** (Frontend) - Luxury chronograph watch e-commerce\n5. 🎬 **IMDb CinemaHub** (Frontend) - Movie discovery preview app powered by TMDB API\n6. 👗 **Cara E-commerce** (Frontend) - Modern responsive storefront with Swiper.js\n7. 💼 **LinkedIn Clone** (Full Stack) - Social networking platform clone\n\nWhich project would you like to explore in detail?",
-      action: { type: 'VIEW_PROJECT', label: 'Explore All Projects', project: 'ShopX' }
-    };
-  }
-
-  if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('react') || lower.includes('node')) {
-    return {
-      reply: "Ritik's tech stack includes:\n- **Frontend**: React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Framer Motion\n- **Backend**: Node.js, Express.js, MongoDB, REST APIs, JWT, Razorpay\n- **AI & Tools**: LangChain, Google GenAI, Git, GitHub, Postman, Vercel, Render",
-      action: null
+      reply: "Ritik has built **7 featured projects** across Full-Stack and Frontend:\n\n1. 🛍️ **ShopX E-commerce** (Full Stack) - E-commerce with AI voice navigation\n2. 🏋️‍♂️ **Muscle Craft Fitness Gym** (Full Stack) - Live gym website with GSAP, admin portal & enquiry system\n3. 👥 **EMS (Employee Management System)** (Full Stack) - Task assignment & employee dashboard\n4. ⌚ **ZORA Watch Store** (Frontend) - Luxury chronograph watch e-commerce\n5. 🎬 **IMDb CinemaHub** (Frontend) - Movie discovery preview app powered by TMDB API\n6. 👗 **Cara E-commerce** (Frontend) - Modern responsive storefront with Swiper.js\n7. 💼 **LinkedIn Clone** (Full Stack) - Social networking platform clone\n\nTell me: *'Open ZORA'*, *'Open Muscle Craft'*, or *'Open ShopX'* and I will launch it for you!",
+      action: { type: 'VIEW_PROJECT', label: 'Explore All Projects', project: 'ShopX', autoOpen: false }
     };
   }
 
   if (lower.includes('contact') || lower.includes('hire') || lower.includes('email') || lower.includes('phone') || lower.includes('whatsapp')) {
     return {
-      reply: "You can reach Ritik directly via:\n- **Email**: ritikvarun64@gmail.com\n- **Phone/WhatsApp**: +91 9808433521\n- **Location**: Agra, Uttar Pradesh, India\n\nClick below to connect on WhatsApp directly!",
-      action: { type: 'WHATSAPP', label: 'Chat on WhatsApp', url: 'https://wa.me/919808843521' }
+      reply: "Connecting you with Ritik on WhatsApp!",
+      action: { type: 'WHATSAPP', label: 'Chat on WhatsApp', url: 'https://wa.me/919808843521', autoOpen: true }
     };
   }
 
@@ -235,7 +314,7 @@ function handleFallbackResponse(message) {
   }
 
   return {
-    reply: "Hello! I am **Ritik AI**, your virtual guide to Ritik Varun's portfolio. You can ask me about his:\n\n- 💼 **Full-Stack & Frontend Projects**\n- 🛠️ **Tech Stack & Skills**\n- 🎓 **Education & Background**\n- 📄 **Resume / CV Download**\n- 📬 **Contact & Hiring Details**\n\nHow can I help you today?",
+    reply: "Hello! I am **Ritik AI**, your virtual guide to Ritik Varun's portfolio. You can ask me to:\n\n- 🚀 **Open any project** (e.g. *'Open Zora'*, *'Open Muscle Craft'*, *'Open ShopX'*)\n- 📄 **Download Resume** (e.g. *'Download CV'*)\n- 💬 **Connect on WhatsApp** (e.g. *'Open WhatsApp'*)\n- 🛠️ **Explore Skills & Tech Stack**\n\nWhat would you like to do?",
     action: null
   };
 }
@@ -265,22 +344,32 @@ async function processAIChat(userMessage, chatHistory = []) {
     const systemPromptText = `
 You are "Ritik AI", the official intelligent AI assistant for Ritik Varun's personal developer portfolio.
 Your goal is to represent Ritik Varun professionally, enthusiastically, and accurately to recruiters, clients, and visitors.
+You also have AUTONOMOUS TOOL/ACTION CAPABILITIES to open projects, trigger downloads, and navigate the website.
 
 KNOWLEDGE BASE (FETCHED LIVE FROM MONGODB):
 ${ragContext}
 
 INSTRUCTIONS:
-1. Answer questions strictly based on the Knowledge Base. If asked about something outside Ritik's background/tech/hiring, politely redirect back to Ritik's work.
+1. Answer questions strictly based on the Knowledge Base.
 2. When asked about projects (e.g., "what projects have you made?", "show all projects", "list all projects", "top projects"):
    - ALWAYS list ALL projects available in the KNOWLEDGE BASE above.
    - For each project, show its name, category (Full Stack / Frontend), and a clear 1-line description.
 3. Keep answers engaging, crisp, and well-formatted with markdown numbered lists/bullets.
 4. Be friendly and confident. You can respond in English (default) or Hinglish/Hindi if the user queries in Hindi.
-5. ACTION TRIGGERS (Append these special tags when applicable so the frontend can render rich interactive buttons):
-   - If user asks for resume, CV, or hiring documents -> Append "[ACTION:DOWNLOAD_CV]" at the end.
-   - If user wants to contact, message, or hire Ritik on WhatsApp -> Append "[ACTION:WHATSAPP]" at the end.
-   - If user wants to email Ritik -> Append "[ACTION:EMAIL]" at the end.
-   - If user specifically asks about a project (e.g. ShopX, EMS, Cara, Muscle Craft, ZORA, IMDB) -> Append "[ACTION:PROJECT:ProjectName]" at the end.
+5. ACTION COMMANDS & TOOL CALLING (CRITICAL: Append these special action tags when the user requests an action or asks to open/view/launch something):
+   - If user asks to OPEN or VIEW or LAUNCH any project (e.g., "open zora", "show me muscle craft", "open shopx", "open cara", "open ems", "open imdb", "open linkedin clone"):
+     Locate that project's demo URL from the KNOWLEDGE BASE and append:
+     "[ACTION:OPEN_URL:demo_url:ProjectName]"
+     Example: For "open zora", append "[ACTION:OPEN_URL:https://zora-watch.netlify.app/:ZORA]".
+     Example: For "open muscle craft", append "[ACTION:OPEN_URL:https://www.musclecraftfitnessgym.in/:Muscle Craft Fitness Gym]".
+     Example: For "open shopx", append "[ACTION:OPEN_URL:https://shopx-6u3e.onrender.com/:ShopX E-commerce]".
+   - If user asks to open GitHub -> Append "[ACTION:OPEN_URL:https://github.com/Ritikvarun:GitHub Profile]".
+   - If user asks to open LinkedIn -> Append "[ACTION:OPEN_URL:https://www.linkedin.com/in/ritik-varun-0b6795274/:LinkedIn Profile]".
+   - If user asks for resume or says "open cv / download cv" -> Append "[ACTION:DOWNLOAD_CV]".
+   - If user asks to open WhatsApp or contact -> Append "[ACTION:WHATSAPP]".
+   - If user asks to email Ritik -> Append "[ACTION:EMAIL]".
+   - If user asks to go to projects page -> Append "[ACTION:NAVIGATE:/projects:Projects Page]".
+   - If user asks to go to about page -> Append "[ACTION:NAVIGATE:/about:About Page]".
 `;
 
     const messages = [
